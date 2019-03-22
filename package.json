@@ -1,5 +1,5 @@
 {
-  "name": "2sic-FAQ-App",
+  "name": "2sic-faq-app",
   "version": "01.00.00",
   "description": "The standard App for 2sic to use as FAQ.",
   "main": "gulpfile.js",
