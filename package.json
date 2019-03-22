@@ -1,0 +1,21 @@
+{
+  "name": "2sic-typescript-template",
+  "version": "01.00.00",
+  "description": "The standard template to use for our Apps.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start-all": "gulp"
+  },
+  "author": "2sic internet solutions",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.3.29"
+  }
+}

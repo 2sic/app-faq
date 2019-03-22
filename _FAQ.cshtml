@@ -1,0 +1,176 @@
+@using Connect.Koi;
+<div class="co-container-outer">
+    <div class="co-container-inner co-accordion-wrapper">
+    
+    @if(Permissions.UserMayEditContent)
+    {
+        <div class="partners-admin-table-wrapper">
+            <table class="partners-admin-table">
+                <tr>
+                    <td>
+                        <span class="partners-admin-warning">NUR ALS ADMINISTRATOR SICHTBAR</span>
+                    </td>
+                    <td>
+    
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Konfiguration verwalten:</span>
+                    </td>
+                    <td>
+                        @Edit.Toolbar(Content)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Kategorien verwalten:</span>
+                    </td>
+                    <td>
+                        @Edit.Toolbar(toolbar: new object[] { 
+                            new { 
+                                showCondition = true,
+                                command = new { 
+                                    action = "contentitems", 
+                                    contentType= "Category" 
+                                }
+                            }
+                        }, settings: new { hover="none", show = "always" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Fragen verwalten:</span>
+                    </td>
+                    <td>
+                        @Edit.Toolbar(toolbar: new object[] { 
+                            new { 
+                                showCondition = true,
+                                command = new { 
+                                    action = "contentitems", 
+                                    contentType= "Question" 
+                                }
+                            }
+                        }, settings: new { hover="none", show = "always" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Frage erstellen:</span>
+                    </td>
+                    <td>
+                        @Edit.Toolbar(toolbar: new object[] { 
+                            new { 
+                                showCondition = true,
+                                command = new { 
+                                    action = "new", 
+                                    contentType= "Question" 
+                                }
+                            }
+                        }, settings: new { hover="none", show = "always" })
+                    </td>
+                </tr>
+            </table>
+            
+            <span style="font-weight:normal; font-size:12px;font-style:italic;">Tipp: im Bearbeitungsmodus sind bei jeder Frage weitere Infos sichtbar.</span>
+            
+        </div>
+    }
+
+    @{
+        var cats = Content.Categories;
+        var questions = AsDynamic(App.Data["Question"])
+                .Where(q => ((IEnumerable<dynamic>)q.Category)
+                .Any(qc => ((IEnumerable<dynamic>)cats)
+                .Any(c => c.Key == qc.Key)));
+        
+        if (Content.SortOrder == "DESC-id-ASC")
+        {
+            questions = questions.OrderByDescending(q => q.Priority).ThenBy(q => q.EntityId);
+        }
+        else if (Content.SortOrder == "DESC-id-DESC")
+        {
+            questions = questions.OrderByDescending(q => q.Priority).ThenByDescending(q => q.EntityId);
+        }
+        else if (Content.SortOrder == "DESC-title-ASC")
+        {
+            questions = questions.OrderByDescending(q => q.Priority).ThenBy(q => q.Title);
+        }
+    }
+
+    @if(App.Settings.UseCategories)
+    {
+        if (cats.Count > 1)
+        {
+            <div class="co-category-wrapper">
+                <ul>
+                    <li class="co-category-element" data-filter="nofilter">
+                        @App.Resources.LabelShowAll
+                    </li>
+                    @foreach (var c in cats)
+                    {
+                        <li class="co-category-element sc-element" data-filter="@c.Key">
+                            @Edit.Toolbar(c, actions: "edit")
+                            @c.Name
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+    
+    <div class="question-wrapper-outer">
+        <div class="question-wrapper">
+            @foreach (var accord in questions)
+            {
+                var categories = ((IEnumerable<dynamic>)accord.Category).Select(x => x.Key);
+                var initiallyExpanded = accord.InitiallyExpanded ?? false;
+
+                <div class="co-accordion-item sc-element" data-filterelem="@Json.Encode(categories)">
+                    @Edit.Toolbar(accord)
+                    <div id="a-@accord.EntityId" class="co-accordion-title @(initiallyExpanded ? "active" : "")" sc-element">
+                        <h2 class="@(!String.IsNullOrEmpty(accord.Icon) || 1 == 1 ? "" : "co-no-icon")">
+                            @if(Permissions.UserMayEditContent && DotNetNuke.Common.Globals.IsEditMode())
+                            {
+                                <span style="padding-left:45px; font-size:11px;color:red;">[@accord.InternalTitle]</span><br />
+                            }
+                            <span>
+                                @if(!String.IsNullOrEmpty(accord.Icon))
+                                {
+                                    <i class="co-icon fas @accord.Icon" aria-hidden="true"></i>
+                                } else {
+                                    <i class="co-icon fas fa-question-circle" aria-hidden="true"></i>
+                                }
+                            </span>
+                            @accord.Title.Replace("\n","<br />")                            
+                        </h2>
+                        
+                        @if(Permissions.UserMayEditContent && DotNetNuke.Common.Globals.IsEditMode())
+                        {
+                            <div style="padding-left:45px; margin:10px 0 20px 0;">
+                                <button class="btn btn-outline-danger" style="font-size:11px;">Prio: @(accord.Priority)</button>
+                                @if (App.Settings.UseCategories) {
+                                    foreach (var c in accord.Category) {
+                                        <button class="btn btn-outline-danger" style="font-size:11px;">@c.Name</button>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    @* prevent adding content if still showing the demo-item - this is done by only adding the class as needed *@
+                    <div class="co-accordion-content" style="@(initiallyExpanded ? "display:block;" : "")">
+                        @((!String.IsNullOrEmpty(accord.Text)) ? Html.Raw("<div>" + accord.Text + "</div>") : "")
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<script src="@App.Path/dist/app-bundle.min.js" data-enableoptimizations="true" ></script>
+<script>
+    new app.App();
+</script>
