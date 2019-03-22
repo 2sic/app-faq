@@ -1,7 +1,7 @@
 {
-  "name": "2sic-typescript-template",
+  "name": "2sic-FAQ-App",
   "version": "01.00.00",
-  "description": "The standard template to use for our Apps.",
+  "description": "The standard App for 2sic to use as FAQ.",
   "main": "gulpfile.js",
   "scripts": {
     "start-all": "gulp"
