@@ -1,4 +1,4 @@
-import { Find } from './components/array_find';
+import { PolyFills } from './components/array_find';
 
 export class App {
     constructor(moduleid: number) {
@@ -7,7 +7,7 @@ export class App {
 
     main = (moduleid: number) => {
         // First, check if Array.find() is supportet, if not, use a polyfill.
-        new Find();
+        new PolyFills();
 
         // Build the app-wrapper, so this code only uses elements from this module.
         const appWrapper = `.app-${moduleid}`;

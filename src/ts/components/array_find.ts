@@ -1,11 +1,11 @@
-export class Find {
+export class PolyFills {
     constructor () {
         this.findPolyfill();
     }
 
     /*
-    *   This checks if Array.find() is supportet, if not, it uses a polyfill.
-    *   This is only used for IE11, if 2sic dropps support for IE11 you can safely remove this code.
+        This checks if Array.find() is supportet, if not, it uses a polyfill.
+        This is only used for IE11, if 2sic dropps support for IE11 you can safely remove this code.
     */
     findPolyfill = () => {
         if (!Array.prototype.find) {
