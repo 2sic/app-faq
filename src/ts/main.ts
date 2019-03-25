@@ -1,13 +1,25 @@
+import { Find } from './components/array_find';
+
 export class App {
-    constructor() {
-        this.main();
+    constructor(moduleid: number) {
+        this.main(moduleid); 
     }
 
-    main = () => {
-        // attach click to all accordions when loading
-        $('.co-accordion-title').click(function (e) {
+    main = (moduleid: number) => {
+        // First, check if Array.find() is supportet, if not, use a polyfill.
+        new Find();
+
+        // Build the app-wrapper, so this code only uses elements from this module.
+        const appWrapper = `.app-${moduleid}`;
+
+        // Attach click to all accordions when loading the site.
+        $(`${appWrapper} .co-accordion-title`).click(function (e) {
             e.preventDefault();
             var _this = $(this);
+
+            // Set URL-Hash on click.
+            var hash = $(this).attr('id');
+            location.hash = hash;
 
             $(this).toggleClass('active').next('.co-accordion-content').slideToggle('normal', function () {
                 $(window).resize();
@@ -18,13 +30,7 @@ export class App {
             }, 500);
         });
 
-        // set hash on click
-        $('.co-accordion-title').click(function (e) {
-            var hash = $(this).attr('id');
-            location.hash = hash;
-        });
-
-        // get hash from url and open specific item 
+        // Get hash from url and open the according questoin item. 
         if (window.location.hash) {
             var hash = window.location.hash;
             if ($(hash).length > 0) {
@@ -36,23 +42,24 @@ export class App {
             }
         }
 
-        // real logic starts here
-        var wrapperParent = $('.question-wrapper-outer');
-        var wrapper = $('.question-wrapper');
+        // Define the crucial wrappers, so we can use them later on in the code.
+        var wrapperParent = $(`${appWrapper} .question-wrapper-outer`);
+        var wrapper = $(`${appWrapper} .question-wrapper`);
         var questionItems = wrapper.find('.co-accordion-item');
         var filter = '';
 
-        $('.co-category-element').click(function () {
-            // Check for active states
-            $('.co-category-element').each(function () {
+        $(`${appWrapper} .faq-category-element`).click(function () {
+            // This checks if the current element has an active state.
+            $(`${appWrapper} .faq-category-element`).each(function () {
                 $(this).removeClass('co-active');
             });
 
             $(this).addClass('co-active');
 
-            // logic to do filtering
+            // This code is responsible for the filtering of the questions
             var newFilter = $(this).data('filter');
 
+            // Stop if clicked on the same filter as the one that is currently active.
             if (newFilter === filter) return;
 
             filter = newFilter;
@@ -71,8 +78,8 @@ export class App {
                 wrapperParent.css('min-height', wrapper.height() + 'px');
                 setTimeout(function () {
                     wrapper.css('opacity', 1);
-                }, 400)
-            }, 400);
+                }, 200)
+            }, 350);
         });
     }
 }

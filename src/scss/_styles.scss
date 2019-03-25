@@ -137,14 +137,14 @@
             transition: opacity .4s ease-in-out;
         }
 
-        .co-category-wrapper {
+        .faq-category-wrapper {
             margin-bottom: $grid-gutter-width;
 
             ul {
                 list-style: none;
                 padding: 0;
 
-                li.co-category-element {
+                li.faq-category-element {
                     display: inline-block;
                     cursor: pointer;
                     padding: 8px;
@@ -168,15 +168,20 @@
         }
     }
 
-    .partners-admin-table-wrapper {
+    // Admin Styles
+    .faq-admin-table-wrapper {
         border: 1px dashed red;
         color: red;
         border-radius: 8px;
         padding: 15px;
         margin-bottom: 30px;
 
-        .partners-admin-warning {
+        .faq-admin-warning {
             font-weight: bold;
         }
+    }
+
+    .faq-admin-msg {
+        color:red;
     }
 }

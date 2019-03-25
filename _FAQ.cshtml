@@ -1,14 +1,14 @@
 @using Connect.Koi;
-<div class="co-container-outer">
+<div class="co-container-outer app-@Dnn.Module.ModuleID">
     <div class="co-container-inner co-accordion-wrapper">
     
     @if(Permissions.UserMayEditContent)
     {
-        <div class="partners-admin-table-wrapper">
-            <table class="partners-admin-table">
+        <div class="faq-admin-table-wrapper">
+            <table class="faq-admin-table">
                 <tr>
                     <td>
-                        <span class="partners-admin-warning">NUR ALS ADMINISTRATOR SICHTBAR</span>
+                        <span class="faq-admin-warning">NUR ALS ADMINISTRATOR SICHTBAR</span>
                     </td>
                     <td>
     
@@ -102,14 +102,14 @@
     {
         if (cats.Count > 1)
         {
-            <div class="co-category-wrapper">
+            <div class="faq-category-wrapper">
                 <ul>
-                    <li class="co-category-element" data-filter="nofilter">
+                    <li class="faq-category-element" data-filter="nofilter">
                         @App.Resources.LabelShowAll
                     </li>
                     @foreach (var c in cats)
                     {
-                        <li class="co-category-element sc-element" data-filter="@c.Key">
+                        <li class="faq-category-element sc-element" data-filter="@c.Key">
                             @Edit.Toolbar(c, actions: "edit")
                             @c.Name
                         </li>
@@ -132,7 +132,7 @@
                         <h2 class="@(!String.IsNullOrEmpty(accord.Icon) || 1 == 1 ? "" : "co-no-icon")">
                             @if(Permissions.UserMayEditContent && DotNetNuke.Common.Globals.IsEditMode())
                             {
-                                <span style="padding-left:45px; font-size:11px;color:red;">[@accord.InternalTitle]</span><br />
+                                <small class="faq-admin-msg">[@accord.InternalTitle]</small><br />
                             }
                             <span>
                                 @if(!String.IsNullOrEmpty(accord.Icon))
@@ -142,20 +142,24 @@
                                     <i class="co-icon fas fa-question-circle" aria-hidden="true"></i>
                                 }
                             </span>
-                            @accord.Title.Replace("\n","<br />")                            
-                        </h2>
-                        
-                        @if(Permissions.UserMayEditContent && DotNetNuke.Common.Globals.IsEditMode())
-                        {
-                            <div style="padding-left:45px; margin:10px 0 20px 0;">
-                                <button class="btn btn-outline-danger" style="font-size:11px;">Prio: @(accord.Priority)</button>
-                                @if (App.Settings.UseCategories) {
-                                    foreach (var c in accord.Category) {
-                                        <button class="btn btn-outline-danger" style="font-size:11px;">@c.Name</button>
+
+                            @accord.Title.Replace("\n","<br />")
+
+                            @if(Permissions.UserMayEditContent && DotNetNuke.Common.Globals.IsEditMode())
+                            {
+                                <div class="faq-admin-msg">
+                                    <small class="">Prio: @(accord.Priority),</small>
+                                    @if (App.Settings.UseCategories) {
+                                        <small>
+                                            Cat:
+                                            @foreach (var c in accord.Category) {
+                                                @c.Name
+                                            }
+                                        </small>
                                     }
-                                }
-                            </div>
-                        }
+                                </div>
+                            }                
+                        </h2>
                     </div>
 
                     @* prevent adding content if still showing the demo-item - this is done by only adding the class as needed *@
@@ -172,5 +176,5 @@
 
 <script src="@App.Path/dist/app-bundle.min.js" data-enableoptimizations="true" ></script>
 <script>
-    new app.App();
+    new faqapp.App(@Dnn.Module.ModuleID);
 </script>
