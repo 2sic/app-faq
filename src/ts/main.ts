@@ -5,7 +5,7 @@ export class App {
         this.main(moduleid); 
     }
 
-    main = (moduleid: number) => {
+    main(moduleid: number) {
         // First, check if Array.find() is supportet, if not, use a polyfill.
         new PolyFills();
 
@@ -51,10 +51,10 @@ export class App {
         $(`${appWrapper} .faq-category-element`).click(function () {
             // This checks if the current element has an active state.
             $(`${appWrapper} .faq-category-element`).each(function () {
-                $(this).removeClass('co-active');
+                $(this).removeClass('active');
             });
 
-            $(this).addClass('co-active');
+            $(this).addClass('active');
 
             // This code is responsible for the filtering of the questions
             var newFilter = $(this).data('filter');
@@ -75,7 +75,9 @@ export class App {
                             return elem === filter;
                         })) ? 'block' : 'none');
                 });
+
                 wrapperParent.css('min-height', wrapper.height() + 'px');
+                
                 setTimeout(function () {
                     wrapper.css('opacity', 1);
                 }, 200)

@@ -143,27 +143,6 @@
             ul {
                 list-style: none;
                 padding: 0;
-
-                li.faq-category-element {
-                    display: inline-block;
-                    cursor: pointer;
-                    padding: 8px;
-                    font-size: 0.85em;
-                    color: $gray-600;
-                    border: 1px solid $gray-400;
-                    border-radius: 8px;
-                    transition: .2s linear color, .2s linear border-color;
-
-                    &:hover {
-                        color: #000;
-                        border-color: #000;
-                    }
-
-                    &.co-active {
-                        color: $primary;
-                        border: 1px solid $primary;
-                    }
-                }
             }
         }
     }

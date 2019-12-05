@@ -72,8 +72,7 @@
                 </tr>
             </table>
             
-            <span style="font-weight:normal; font-size:12px;font-style:italic;">Tipp: im Bearbeitungsmodus sind bei jeder Frage weitere Infos sichtbar.</span>
-            
+            <small>Tipp: im Bearbeitungsmodus sind bei jeder Frage weitere Infos sichtbar.</small>
         </div>
     }
 
@@ -104,12 +103,12 @@
         {
             <div class="faq-category-wrapper">
                 <ul>
-                    <li class="faq-category-element" data-filter="nofilter">
+                    <li @Koi.Class("all='faq-category-element' bs3='btn btn-primary' bs4,oth='btn btn-outline-primary'") data-filter="nofilter">
                         @App.Resources.LabelShowAll
                     </li>
                     @foreach (var c in cats)
                     {
-                        <li class="faq-category-element sc-element" data-filter="@c.Key">
+                        <li @Koi.Class("all='faq-category-element sc-element' bs3='btn btn-primary' bs4,oth='btn btn-outline-primary'") data-filter="@c.Key">
                             @Edit.Toolbar(c, actions: "edit")
                             @c.Name
                         </li>
@@ -148,7 +147,7 @@
                             @if(Permissions.UserMayEditContent && DotNetNuke.Common.Globals.IsEditMode())
                             {
                                 <div class="faq-admin-msg">
-                                    <small class="">Prio: @(accord.Priority),</small>
+                                    <small>Prio: @(accord.Priority),</small>
                                     @if (App.Settings.UseCategories) {
                                         <small>
                                             Cat:
@@ -176,5 +175,5 @@
 
 <script src="@App.Path/dist/app-bundle.min.js" data-enableoptimizations="true" ></script>
 <script>
-    new faqapp.App(@Dnn.Module.ModuleID);
+    new faq.App(@Dnn.Module.ModuleID);
 </script>

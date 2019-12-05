@@ -7,7 +7,7 @@ module.exports = {
   mode: 'none',
   output: {
     filename: 'app-bundle.min.js',
-    library: 'faqapp',
+    library: 'faq',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.scss']
