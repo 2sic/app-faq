@@ -4,7 +4,7 @@
 // update the reference to your _variables.scss of your skin
 // and re-run the following npm
 // npm run start-bs4
-// 
+//
 
 
 // Add header-comments to the final file
@@ -12,7 +12,7 @@
 
 // Include needed variables and mixins from Bootstrap 4 this
 // You must adapt these paths to match your Bootstrap 4 skin
-@import "../../../_default/Skins/2sxcBootstrap-B4/src/_variables.scss";
+@import "../../../_default/Skins/2sxcBootstrap-B4/src/scss/_variables.scss";
 @import "../../../_default/Skins/2sxcBootstrap-B4/node_modules/bootstrap/scss/mixins/_breakpoints.scss";
 
 @import "_styles.scss"; // General CSS stuff for everything
