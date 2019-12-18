@@ -1,22 +1,22 @@
 @using Connect.Koi;
 <div class="co-container-outer app-@Dnn.Module.ModuleID">
     <div class="co-container-inner co-accordion-wrapper">
-    
+
     @if(Permissions.UserMayEditContent)
     {
         <div class="faq-admin-table-wrapper">
             <table class="faq-admin-table">
                 <tr>
                     <td>
-                        <span class="faq-admin-warning">NUR ALS ADMINISTRATOR SICHTBAR</span>
+                        <span class="faq-admin-warning">@App.Resources.OnlyAdminVisible</span>
                     </td>
                     <td>
-    
+
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span>Konfiguration verwalten:</span>
+                        <span>@App.Resources.ManageConfiguration</span>
                     </td>
                     <td>
                         @Edit.Toolbar(Content)
@@ -24,15 +24,15 @@
                 </tr>
                 <tr>
                     <td>
-                        <span>Kategorien verwalten:</span>
+                        <span>@App.Resources.ManageCategories</span>
                     </td>
                     <td>
-                        @Edit.Toolbar(toolbar: new object[] { 
-                            new { 
+                        @Edit.Toolbar(toolbar: new object[] {
+                            new {
                                 showCondition = true,
-                                command = new { 
-                                    action = "contentitems", 
-                                    contentType= "Category" 
+                                command = new {
+                                    action = "contentitems",
+                                    contentType= "Category"
                                 }
                             }
                         }, settings: new { hover="none", show = "always" })
@@ -40,15 +40,15 @@
                 </tr>
                 <tr>
                     <td>
-                        <span>Fragen verwalten:</span>
+                        <span>@App.Resources.ManageQuestions</span>
                     </td>
                     <td>
-                        @Edit.Toolbar(toolbar: new object[] { 
-                            new { 
+                        @Edit.Toolbar(toolbar: new object[] {
+                            new {
                                 showCondition = true,
-                                command = new { 
-                                    action = "contentitems", 
-                                    contentType= "Question" 
+                                command = new {
+                                    action = "contentitems",
+                                    contentType= "Question"
                                 }
                             }
                         }, settings: new { hover="none", show = "always" })
@@ -56,23 +56,23 @@
                 </tr>
                 <tr>
                     <td>
-                        <span>Frage erstellen:</span>
+                        <span>@App.Resources.CreateQuestion</span>
                     </td>
                     <td>
-                        @Edit.Toolbar(toolbar: new object[] { 
-                            new { 
+                        @Edit.Toolbar(toolbar: new object[] {
+                            new {
                                 showCondition = true,
-                                command = new { 
-                                    action = "new", 
-                                    contentType= "Question" 
+                                command = new {
+                                    action = "new",
+                                    contentType= "Question"
                                 }
                             }
                         }, settings: new { hover="none", show = "always" })
                     </td>
                 </tr>
             </table>
-            
-            <small>Tipp: im Bearbeitungsmodus sind bei jeder Frage weitere Infos sichtbar.</small>
+
+            <small>@App.Resources.EditModeHint</small>
         </div>
     }
 
@@ -82,7 +82,7 @@
                 .Where(q => ((IEnumerable<dynamic>)q.Category)
                 .Any(qc => ((IEnumerable<dynamic>)cats)
                 .Any(c => c.Key == qc.Key)));
-        
+
         if (Content.SortOrder == "DESC-id-ASC")
         {
             questions = questions.OrderByDescending(q => q.Priority).ThenBy(q => q.EntityId);
@@ -117,7 +117,7 @@
             </div>
         }
     }
-    
+
     <div class="question-wrapper-outer">
         <div class="question-wrapper">
             @foreach (var accord in questions)
@@ -157,7 +157,7 @@
                                         </small>
                                     }
                                 </div>
-                            }                
+                            }
                         </h2>
                     </div>
 
