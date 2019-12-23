@@ -1,8 +1,8 @@
 @using Connect.Koi;
-<div class="co-container-outer app-@Dnn.Module.ModuleID position-relative" @(Permissions.UserMayEditContent) { style="padding-top:80px;"} >
+<div class="co-container-outer app-@Dnn.Module.ModuleID position-relative" @(Edit.Enabled) { style="padding-top:80px;"} >
     <div class="co-container-inner co-accordion-wrapper">
 
-    @if(Permissions.UserMayEditContent)
+    @if(Edit.Enabled)
     {
     <div id="setting-btn" style="background-image: url(@App.Path/assets/gear.png)"></div> 
       <div id="setting-wrapper" class="setting-wrapper transform">
@@ -142,7 +142,7 @@
                     @Edit.Toolbar(accord)
                     <div id="a-@accord.EntityId" class="co-accordion-title @(initiallyExpanded ? "active" : "")" sc-element">
                         <h2 class="@(!String.IsNullOrEmpty(accord.Icon) || 1 == 1 ? "" : "co-no-icon")">
-                            @if(Permissions.UserMayEditContent && DotNetNuke.Common.Globals.IsEditMode())
+                            @if(Edit.Enabled && DotNetNuke.Common.Globals.IsEditMode())
                             {
                                 <small class="faq-admin-msg">[@accord.InternalTitle]</small><br />
                             }
@@ -157,7 +157,7 @@
 
                             @accord.Title.Replace("\n","<br />")
 
-                            @if(Permissions.UserMayEditContent && DotNetNuke.Common.Globals.IsEditMode())
+                            @if(Edit.Enabled && DotNetNuke.Common.Globals.IsEditMode())
                             {
                                 <div class="faq-admin-msg">
                                     <small>Prio: @(accord.Priority),</small>
