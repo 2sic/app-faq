@@ -17,24 +17,23 @@
       }
 
       &:after {
-        content: "\f067";
+        content: "+";
         position: absolute;
         right: 10px;
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
         text-align: center;
-        font-size: 12px;
+        font-size: 20px;
         top: 50%;
-        margin-top: -10px;
+        margin-top: -12px;
         display: block;
-        font-family: 'Font Awesome\ 5 Free';
-        font-weight: 900;
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: $primary;
         border-radius: 50%;
+        vertical-align: middle;
       }
 
       &.active {
@@ -53,7 +52,7 @@
       }
 
       &.active:after {
-        content: "\f068";
+        content: "-";
         background: $gray-200;
 
       }
@@ -148,44 +147,51 @@
   }
 
   // Admin Styles
-  .setting-wrapper {
-    margin: 15px 0;
-    background: #1a1a1a;
-    color: #999;
-    border-bottom-left-radius: 8px;
-    width: 320px;
-    position: fixed;
-    right: -320px;
-    top: 200px;
-    box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.3);
-    transition: right .3s ease-in-out;
-    z-index: 2000;
-  }
-
-  .setting-wrapper.active {
-    right: 0;
-  }
-
-  .setting-wrapper #setting-btn {
+ #setting-btn {
     position: absolute;
     cursor: pointer;
-    left: -40px;
-    top: 0;
+    right: 0px;
+    top: 20px;
     width: 40px;
     height: 40px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    background-color: #000;
+    border-radius: 50%;
+    background-color: #0088F4;
     background-position: center 12px;
     background-repeat: no-repeat;
     color: #FFF;
-    box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.4);
+  }
+  .setting-wrapper {
+    opacity: 0;
+    visibility: hidden;
+    margin: 15px 0;
+    background: #1a1a1a;
+    color: #999;
+    border-radius: 8px;
+    width: 320px;
+    position: absolute;
+    right: 50px;
+    top: 30px;
+    box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.4);
+    transition: opacity .3s ease-in-out, visibility .3s ease-in-out, top .3s ease-in-out;
+    z-index: 2000;
+
+  }
+
+  .setting-wrapper.active {
+    opacity: 1.0;
+    visibility: visible;
+    top: 0px;
+    transition: opacity .3s ease-in-out, visibility .3s ease-in-out, top .3s ease-in-out;
+
   }
 
   .setting-wrapper .Setting-Title {
     padding: 12px 24px;
     border-bottom: 0px solid rgba(255, 255, 255, 0.6);
-    background: #000;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background:#333;
     color: #FFF;
   }
 

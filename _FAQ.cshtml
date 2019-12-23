@@ -1,11 +1,11 @@
 @using Connect.Koi;
-<div class="co-container-outer app-@Dnn.Module.ModuleID">
+<div class="co-container-outer app-@Dnn.Module.ModuleID position-relative" @(Permissions.UserMayEditContent) { style="padding-top:80px;"} >
     <div class="co-container-inner co-accordion-wrapper">
 
     @if(Permissions.UserMayEditContent)
     {
+    <div id="setting-btn" style="background-image: url(@App.Path/assets/gear.png)"></div> 
       <div id="setting-wrapper" class="setting-wrapper transform">
-        <div id="setting-btn" style="background-image: url(@App.Path/assets/gear.png)"></div>
         <div class="Setting-Title">
           <h5>@App.Resources.MenuTitle</h5>
           <small>@App.Resources.OnlyAdminVisible</small>
