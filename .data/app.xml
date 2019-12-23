@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="10.24.00" ExportDate="2019-12-23T11:38:31.9877111+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="10.24.00" ExportDate="2019-12-23T11:53:08.4081808+01:00">
   <Header>
     <App Guid="a5b11a5f-0f25-41bd-848f-12d2dcc190e3" />
     <Language Default="en-US" />
@@ -759,7 +759,7 @@
       <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String" />
       <Value Key="RequiredVersion" Value="08.03.00" Type="String" />
       <Value Key="SupportsAjaxReload" Value="False" Type="Boolean" />
-      <Value Key="Version" Value="02.01.00" Type="String" />
+      <Value Key="Version" Value="02.02.00" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="1bdd64e8-da9f-43be-a87f-4da1ffe29ab5" KeyNumber="133">
       <Value Key="UseCategories" Value="True" Type="Boolean" />
@@ -821,7 +821,7 @@
       </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="14f785f2-a337-4ac3-ac42-3d19313b0423">
-      <Value Key="ContentDemoEntity" Value="4eda7c24-c7ca-42d5-a6f8-679dcd4ac59d" Type="Entity" />
+      <Value Key="ContentDemoEntity" Value="9296dbdc-16eb-4974-83ce-640a6f2ee482" Type="Entity" />
       <Value Key="ContentTypeStaticName" Value="3e136876-20ca-4ca5-af09-163f4cb3a3a5" Type="String" />
       <Value Key="IsHidden" Value="False" Type="Boolean" />
       <Value Key="ListContentTypeStaticName" Value="" Type="String" />
@@ -1517,10 +1517,20 @@
       <Value Key="Category" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0" Type="Entity" />
       <Value Key="Icon" Value="fa-question-circle" Type="String" />
       <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
-      <Value Key="InternalTitle" Value="Generelle Frage" Type="String" />
+      <Value Key="InternalTitle" Value="General question" Type="String" />
       <Value Key="Priority" Value="2" Type="Number" />
-      <Value Key="Text" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String" />
-      <Value Key="Title" Value="Was qualifiziert diese Frage als Frage" Type="String" />
+      <Value Key="Text" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Text" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="153" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="What makes this a good question?" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Was qualifiziert diese Frage als Frage" Type="String">
+        <Dimension DimensionID="153" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="50c499e7-e45a-4f77-ada0-32696629294a">
       <Value Key="App" Value="Default" Type="String" />
@@ -1532,19 +1542,36 @@
       <Value Key="Category" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0" Type="Entity" />
       <Value Key="Icon" Value="fa-question-circle" Type="String" />
       <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
-      <Value Key="InternalTitle" Value="Generelle Frage 2" Type="String" />
+      <Value Key="InternalTitle" Value="General Question 2" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
       <Value Key="Priority" Value="4" Type="Number" />
-      <Value Key="Text" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String" />
-      <Value Key="Title" Value="Eine weitere Frage" Type="String" />
+      <Value Key="Text" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Text" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="153" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Another question!" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Eine weitere Frage" Type="String">
+        <Dimension DimensionID="153" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Question" EntityGUID="a019aab4-2c31-48cd-80b0-12a022ad7602">
       <Value Key="Category" Value="adcfe352-0cd2-4743-b082-91aea79965f3" Type="Entity" />
       <Value Key="Icon" Value="fa-question-circle" Type="String" />
       <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
-      <Value Key="InternalTitle" Value="Medien Frage" Type="String" />
+      <Value Key="InternalTitle" Value="A question for the Media" Type="String" />
       <Value Key="Priority" Value="0" Type="Number" />
       <Value Key="Text" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String" />
-      <Value Key="Title" Value="Eine Frage zu den Medien" Type="String" />
+      <Value Key="Title" Value="Question for the Media..." Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Eine Frage zu den Medien" Type="String">
+        <Dimension DimensionID="153" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="79f54fb6-578c-404f-9868-01bdb490cccc" AttributeSetName="Category" EntityGUID="adcfe352-0cd2-4743-b082-91aea79965f3">
       <Value Key="Key" Value="media" Type="String" />
@@ -1554,44 +1581,35 @@
       <Value Key="Key" Value="general" Type="String" />
       <Value Key="Name" Value="General" Type="String" />
     </Entity>
-    <Entity AssignmentObjectType="Default" AttributeSetStaticName="3e136876-20ca-4ca5-af09-163f4cb3a3a5" AttributeSetName="ViewConfiguration" EntityGUID="4eda7c24-c7ca-42d5-a6f8-679dcd4ac59d">
-      <Value Key="Title" Value="Nur Brokers (DEMO)" Type="String" />
-    </Entity>
-    <Entity AssignmentObjectType="Default" AttributeSetStaticName="3e136876-20ca-4ca5-af09-163f4cb3a3a5" AttributeSetName="ViewConfiguration" EntityGUID="cb2c4394-7c70-43f2-9868-7cdafc1bc60c">
-      <Value Key="Title" Value="Test" Type="String" />
-    </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="3e136876-20ca-4ca5-af09-163f4cb3a3a5" AttributeSetName="ViewConfiguration" EntityGUID="9296dbdc-16eb-4974-83ce-640a6f2ee482">
       <Value Key="Categories" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0,adcfe352-0cd2-4743-b082-91aea79965f3" Type="Entity" />
       <Value Key="SortOrder" Value="DESC-id-ASC" Type="String" />
-      <Value Key="Title" Value="Hauptansicht (Alle Kategorien)" Type="String" />
-    </Entity>
-    <Entity AssignmentObjectType="Default" AttributeSetStaticName="3e136876-20ca-4ca5-af09-163f4cb3a3a5" AttributeSetName="ViewConfiguration" EntityGUID="a78b0acb-d250-4f36-b830-b2bbe7cfe1e2">
-      <Value Key="Categories" Value="adcfe352-0cd2-4743-b082-91aea79965f3,45e83638-97b1-417e-bacd-e17b8e8a0ae0" Type="Entity" />
-      <Value Key="SortOrder" Value="DESC-id-ASC" Type="String" />
-      <Value Key="Title" Value="Übertragung Lebensversichersbestände" Type="String" />
+      <Value Key="Title" Value="Hauptansicht (Alle Kategorien)" Type="String">
+        <Dimension DimensionID="153" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Question" EntityGUID="76c545f0-a25e-49f2-8f1d-c0f88cf64df5">
       <Value Key="Category" Value="adcfe352-0cd2-4743-b082-91aea79965f3" Type="Entity" />
       <Value Key="Icon" Value="" Type="String" />
       <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
-      <Value Key="InternalTitle" Value="Demo Eintrag" Type="String" />
+      <Value Key="InternalTitle" Value="Demo Entry" Type="String" />
       <Value Key="Priority" Value="0" Type="Number" />
       <Value Key="Text" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String" />
-      <Value Key="Title" Value="Demo Fage" Type="String" />
-    </Entity>
-    <Entity AssignmentObjectType="Default" AttributeSetStaticName="3e136876-20ca-4ca5-af09-163f4cb3a3a5" AttributeSetName="ViewConfiguration" EntityGUID="c6789ede-32f6-4978-a22b-afbe2cdb4acc">
-      <Value Key="Categories" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0,adcfe352-0cd2-4743-b082-91aea79965f3" Type="Entity" />
-      <Value Key="SortOrder" Value="DESC-id-ASC" Type="String" />
-      <Value Key="Title" Value="demo" Type="String" />
+      <Value Key="Title" Value="Demo Question" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo Frage" Type="String">
+        <Dimension DimensionID="153" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Question" EntityGUID="fcd59c22-e7eb-43ed-8126-f1b59bd80f14">
       <Value Key="Category" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0" Type="Entity" />
       <Value Key="Icon" Value="" Type="String" />
       <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
-      <Value Key="InternalTitle" Value="Test" Type="String" />
+      <Value Key="InternalTitle" Value="Test Question" Type="String" />
       <Value Key="Priority" Value="0" Type="Number" />
-      <Value Key="Text" Value="&lt;p&gt;Test&lt;/p&gt;" Type="String" />
-      <Value Key="Title" Value="Test" Type="String" />
+      <Value Key="Text" Value="&lt;p&gt;Test Answer!&lt;/p&gt;" Type="String" />
+      <Value Key="Title" Value="Test Question" Type="String" />
     </Entity>
   </Entities>
   <PortalFiles />
