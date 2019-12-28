@@ -1,182 +1,43 @@
 @using Connect.Koi;
-<div class="co-container-outer app-@Dnn.Module.ModuleID position-relative" @(Edit.Enabled) { style="padding-top:80px;"} >
+@using ToSic.Razor.Blade;
+@using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
+<div class="co-container-outer app-@Dnn.Module.ModuleID position-relative" 
+    @Edit.Attribute("style", "padding-top:80px;") >
     <div class="co-container-inner co-accordion-wrapper">
 
-    @if(Edit.Enabled)
-    {
-    <div id="setting-btn" style="background-image: url(@App.Path/assets/gear.png)"></div> 
-      <div id="setting-wrapper" class="setting-wrapper transform">
-        <div class="Setting-Title">
-          <h5>@App.Resources.MenuTitle</h5>
-          <small>@App.Resources.OnlyAdminVisible</small>
-        </div>
-        <div class="setting-item">
-          <div class="row">
-            <div class="col-6">
-              @App.Resources.ManageConfiguration
-            </div>
-            <div class="col-6">
-              @Edit.Toolbar(Content)
-            </div>
-          </div>
-        </div>
-        <div class="setting-item">
-          <div class="row">
-            <div class="col-6">
-                @App.Resources.ManageCategories
-            </div>
-            <div class="col-6">
-              @Edit.Toolbar(toolbar: new object[] {
-                  new {
-                      showCondition = true,
-                      command = new {
-                          action = "contentitems",
-                          contentType= "Category"
-                      }
-                  }
-              }, settings: new { hover="none", show = "always" })
-            </div>
-          </div>
-        </div>
-        <div class="setting-item">
-          <div class="row">
-            <div class="col-6">
-                @App.Resources.ManageQuestions
-            </div>
-            <div class="col-6">
-              @Edit.Toolbar(toolbar: new object[] {
-                  new {
-                      showCondition = true,
-                      command = new {
-                          action = "contentitems",
-                          contentType= "Question"
-                      }
-                  }
-              }, settings: new { hover="none", show = "always" })
-            </div>
-          </div>
-        </div>
-        <div class="setting-item">
-          <div class="row">
-            <div class="col-6">
-                @App.Resources.CreateQuestion
-            </div>
-            <div class="col-6">
-              @Edit.Toolbar(toolbar: new object[] {
-                  new {
-                      showCondition = true,
-                      command = new {
-                          action = "new",
-                          contentType= "Question"
-                      }
-                  }
-              }, settings: new { hover="none", show = "always" })
-            </div>
-          </div>
-        </div>
-        <div class="setting-item">
-          <div class="row">
-            <div class="col-12">
-                @App.Resources.EditModeHint
-            </div>
-          </div>
-        </div>
-      </div>
-      <script>
-        $("#setting-btn").click(function() {
-          $('#setting-wrapper').toggleClass('active');
-        });
-      </script>
+    @if(Edit.Enabled) {
+        @RenderPage("_AdminPanel.cshtml")
     }
 
-    @{
-        var cats = Content.Categories;
-        var questions = AsDynamic(App.Data["Question"])
-                .Where(q => ((IEnumerable<dynamic>)q.Category)
-                .Any(qc => ((IEnumerable<dynamic>)cats)
-                .Any(c => c.Key == qc.Key)));
-
-        if (Content.SortOrder == "DESC-id-ASC")
-        {
-            questions = questions.OrderByDescending(q => q.Priority).ThenBy(q => q.EntityId);
-        }
-        else if (Content.SortOrder == "DESC-id-DESC")
-        {
-            questions = questions.OrderByDescending(q => q.Priority).ThenByDescending(q => q.EntityId);
-        }
-        else if (Content.SortOrder == "DESC-title-ASC")
-        {
-            questions = questions.OrderByDescending(q => q.Priority).ThenBy(q => q.Title);
-        }
-    }
-
-    @if(App.Settings.UseCategories)
-    {
-        if (cats.Count > 1)
-        {
-            <div class="faq-category-wrapper">
-                <ul>
-                    <li @Koi.Class("all='faq-category-element' bs3='btn btn-primary' bs4,oth='btn btn-outline-primary'") data-filter="nofilter">
-                        @App.Resources.LabelShowAll
-                    </li>
-                    @foreach (var c in cats)
-                    {
-                        <li @Koi.Class("all='faq-category-element sc-element' bs3='btn btn-primary' bs4,oth='btn btn-outline-primary'") data-filter="@c.Key">
-                            @Edit.Toolbar(c, actions: "edit")
-                            @c.Name
-                        </li>
-                    }
-                </ul>
-            </div>
-        }
+    @if(App.Settings.UseCategories && Content.Categories.Count > 1) {
+        @RenderPage("_Categories.cshtml")
     }
 
     <div class="question-wrapper-outer">
         <div class="question-wrapper">
-            @foreach (var accord in questions)
+            @foreach (var q in GetQuestions(Content.Categories))
             {
-                var categories = ((IEnumerable<dynamic>)accord.Category).Select(x => x.Key);
-                var initiallyExpanded = accord.InitiallyExpanded ?? false;
+                // get the categories for interactive filtering
+                var categories = ((IEnumerable<dynamic>)q.Category).Select(x => x.Key);
+
+                // should this be expanded initially? default is false
+                var initiallyExpanded = q.InitiallyExpanded ?? false;
+
+                // use the icon or default to question-circle
+                var icon = Text.First(q.Icon, "fa-question-circle");
 
                 <div class="co-accordion-item sc-element" data-filterelem="@Json.Encode(categories)">
-                    @Edit.Toolbar(accord)
-                    <div id="a-@accord.EntityId" class="co-accordion-title @(initiallyExpanded ? "active" : "")" sc-element">
-                        <h2 class="@(!String.IsNullOrEmpty(accord.Icon) || 1 == 1 ? "" : "co-no-icon")">
-                            @if(Edit.Enabled && DotNetNuke.Common.Globals.IsEditMode())
-                            {
-                                <small class="faq-admin-msg">[@accord.InternalTitle]</small><br />
-                            }
-                            <span>
-                                @if(!String.IsNullOrEmpty(accord.Icon))
-                                {
-                                    <i class="co-icon fas @accord.Icon" aria-hidden="true"></i>
-                                } else {
-                                    <i class="co-icon fas fa-question-circle" aria-hidden="true"></i>
-                                }
-                            </span>
-
-                            @accord.Title.Replace("\n","<br />")
-
-                            @if(Edit.Enabled && DotNetNuke.Common.Globals.IsEditMode())
-                            {
-                                <div class="faq-admin-msg">
-                                    <small>Prio: @(accord.Priority),</small>
-                                    @if (App.Settings.UseCategories) {
-                                        <small>
-                                            Cat:
-                                            @foreach (var c in accord.Category) {
-                                                @c.Name
-                                            }
-                                        </small>
-                                    }
-                                </div>
-                            }
+                    @Edit.Toolbar(q, actions: "edit")
+                    <div id="a-@q.EntityId" class='co-accordion-title @(initiallyExpanded ? "active" : "") sc-element'>
+                        <h2 @Edit.Attribute("title", AdminHelperText(q))>
+                            <span><i class="co-icon fas @icon" aria-hidden="true"></i></span>
+                            @Tags.Nl2Br(q.Title)
                         </h2>
                     </div>
 
-                    @* prevent adding content if still showing the demo-item - this is done by only adding the class as needed *@
-                    <div class="co-accordion-content" style="@(initiallyExpanded ? "display:block;" : "")">
-                        @((!String.IsNullOrEmpty(accord.Text)) ? Html.Raw("<div>" + accord.Text + "</div>") : "")
+                    @* Show the answer; compact or expanded *@
+                    <div class="co-accordion-content" style='@(initiallyExpanded ? "display:block;" : "")'>
+                        @Html.Raw(q.Text)
                     </div>
                 </div>
             }
@@ -188,5 +49,45 @@
 
 <script src="@App.Path/dist/app-bundle.min.js" data-enableoptimizations="true" ></script>
 <script>
+    // initialize the javascripts for the FAQ
     new faq.App(@Dnn.Module.ModuleID);
 </script>
+
+@functions {
+    // Get all the questions and sort as is configured
+    Dynlist GetQuestions(Dynlist filterCats) 
+    {
+        // get all questions
+        var questions = AsDynamic(App.Data["Question"]);
+
+        // if we have categories, then filter with these
+        if(filterCats != null && filterCats.Any())
+            questions = questions.Where(q => ((Dynlist)q.Category)
+                    .Any(qc => filterCats.Any(fc => fc == qc)));
+
+        // now sort the results as expected
+        if (Content.SortOrder == "DESC-id-ASC")
+        {
+            return questions.OrderByDescending(q => q.Priority).ThenBy(q => q.EntityId);
+        }
+        else if (Content.SortOrder == "DESC-id-DESC")
+        {
+            return questions.OrderByDescending(q => q.Priority).ThenByDescending(q => q.EntityId);
+        }
+        else if (Content.SortOrder == "DESC-title-ASC")
+        {
+            return questions.OrderByDescending(q => q.Priority).ThenBy(q => q.Title);
+        }
+        return questions;
+    }
+
+    // Create a help-label for admins to better manage the questions
+    string AdminHelperText(dynamic q) 
+    {
+        var itemCategories = (q.Category as Dynlist).Select(cat => cat.Name);
+
+        return q.InternalTitle + ", " 
+            + "Prio: " + q.Priority + ", "
+            + "Categories: " + String.Join(",", itemCategories);
+    }
+}

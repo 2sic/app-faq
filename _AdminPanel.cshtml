@@ -1,0 +1,84 @@
+<div id="setting-btn" style="background-image: url(@App.Path/assets/gear.png)"></div> 
+
+<div id="setting-wrapper" class="setting-wrapper transform">
+<div class="Setting-Title">
+    <h5>@App.Resources.MenuTitle</h5>
+    <small>@App.Resources.OnlyAdminVisible</small>
+</div>
+<div class="setting-item">
+    <div class="row">
+    <div class="col-6">
+        @App.Resources.ManageConfiguration
+    </div>
+    <div class="col-6">
+        @Edit.Toolbar(Content)
+    </div>
+    </div>
+</div>
+<div class="setting-item">
+    <div class="row">
+    <div class="col-6">
+        @App.Resources.ManageCategories
+    </div>
+    <div class="col-6">
+        @Edit.Toolbar(toolbar: new object[] {
+            new {
+                showCondition = true,
+                command = new {
+                    action = "contentitems",
+                    contentType= "Category"
+                }
+            }
+        }, settings: new { hover="none", show = "always" })
+    </div>
+    </div>
+</div>
+<div class="setting-item">
+    <div class="row">
+    <div class="col-6">
+        @App.Resources.ManageQuestions
+    </div>
+    <div class="col-6">
+        @Edit.Toolbar(toolbar: new object[] {
+            new {
+                showCondition = true,
+                command = new {
+                    action = "contentitems",
+                    contentType= "Question"
+                }
+            }
+        }, settings: new { hover="none", show = "always" })
+    </div>
+    </div>
+</div>
+<div class="setting-item">
+    <div class="row">
+    <div class="col-6">
+        @App.Resources.CreateQuestion
+    </div>
+    <div class="col-6">
+        @Edit.Toolbar(toolbar: new object[] {
+            new {
+                showCondition = true,
+                command = new {
+                    action = "new",
+                    contentType= "Question"
+                }
+            }
+        }, settings: new { hover="none", show = "always" })
+    </div>
+    </div>
+</div>
+<div class="setting-item">
+    <div class="row">
+    <div class="col-12">
+        @App.Resources.EditModeHint
+    </div>
+    </div>
+</div>
+</div>
+<script>
+$("#setting-btn").click(function() {
+    $('#setting-wrapper').toggleClass('active');
+});
+</script>
