@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="10.24.00" ExportDate="2019-12-23T11:59:31.2988425+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="10.24.00" ExportDate="2019-12-28T15:41:52.7228012+01:00">
   <Header>
     <App Guid="a5b11a5f-0f25-41bd-848f-12d2dcc190e3" />
     <Language Default="en-US" />
@@ -582,7 +582,7 @@
             </Value>
             <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="False" Type="Boolean" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="da97204d-fbae-4f6c-a9d4-5a74e14f61b4" KeyNumber="2171">
             <Value Key="DropdownValues" Value="" Type="String" />
@@ -590,7 +590,7 @@
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-font-icon-picker" AttributeSetName="@string-font-icon-picker" EntityGUID="c388f144-05ec-4711-a8ac-1a83ed48d905" KeyNumber="2171">
             <Value Key="CssPrefix" Value=".fa-" Type="String" />
-            <Value Key="Files" Value="[App:Path]/dist/fontawesome/css/fontawesome-nobrands.min.css" Type="String" />
+            <Value Key="Files" Value="[App:Path]/dist/icons/css/fontawesome-nobrands.min.css" Type="String" />
             <Value Key="PreviewCss" Value="fas" Type="String" />
           </Entity>
         </Attribute>
@@ -757,9 +757,9 @@
       <Value Key="Hidden" Value="False" Type="Boolean" />
       <Value Key="OriginalId" Value="a5b11a5f-0f25-41bd-848f-12d2dcc190e3" Type="String" />
       <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String" />
-      <Value Key="RequiredVersion" Value="08.03.00" Type="String" />
+      <Value Key="RequiredVersion" Value="10.24.00" Type="String" />
       <Value Key="SupportsAjaxReload" Value="False" Type="Boolean" />
-      <Value Key="Version" Value="02.03.00" Type="String" />
+      <Value Key="Version" Value="02.04.00" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="1bdd64e8-da9f-43be-a87f-4da1ffe29ab5" KeyNumber="133">
       <Value Key="UseCategories" Value="True" Type="Boolean" />
@@ -1540,7 +1540,7 @@
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Question" EntityGUID="72441d1a-d31e-45b0-ba27-bb03c0aa43ce">
       <Value Key="Category" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0" Type="Entity" />
-      <Value Key="Icon" Value="fa-question-circle" Type="String" />
+      <Value Key="Icon" Value="fa-anchor" Type="String" />
       <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
       <Value Key="InternalTitle" Value="General Question 2" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
@@ -1561,7 +1561,7 @@
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Question" EntityGUID="a019aab4-2c31-48cd-80b0-12a022ad7602">
       <Value Key="Category" Value="adcfe352-0cd2-4743-b082-91aea79965f3" Type="Entity" />
-      <Value Key="Icon" Value="fa-question-circle" Type="String" />
+      <Value Key="Icon" Value="fa-angle-double-down" Type="String" />
       <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
       <Value Key="InternalTitle" Value="A question for the Media" Type="String" />
       <Value Key="Priority" Value="0" Type="Number" />

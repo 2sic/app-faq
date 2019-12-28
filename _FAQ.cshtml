@@ -1,50 +1,48 @@
-@using Connect.Koi;
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 <div class="co-container-outer app-@Dnn.Module.ModuleID position-relative" 
-    @Edit.Attribute("style", "padding-top:80px;") >
-    <div class="co-container-inner co-accordion-wrapper">
+	@Edit.Attribute("style", "padding-top:80px;") >
+	<div class="co-container-inner co-accordion-wrapper">
 
     @if(Edit.Enabled) {
-        @RenderPage("_AdminPanel.cshtml")
+			@RenderPage("_AdminPanel.cshtml")
     }
 
     @if(App.Settings.UseCategories && Content.Categories.Count > 1) {
-        @RenderPage("_Categories.cshtml")
+			@RenderPage("_Categories.cshtml")
     }
 
     <div class="question-wrapper-outer">
-        <div class="question-wrapper">
-            @foreach (var q in GetQuestions(Content.Categories))
-            {
-                // get the categories for interactive filtering
-                var categories = ((IEnumerable<dynamic>)q.Category).Select(x => x.Key);
+			<div class="question-wrapper">
+			@foreach (var q in GetQuestions(Content.Categories))
+			{
+				// get the categories for interactive (JavaScript) filtering
+				var qCats = Json.Encode( (q.Category as Dynlist).Select(x => x.Key) );
 
-                // should this be expanded initially? default is false
-                var initiallyExpanded = q.InitiallyExpanded ?? false;
+				// should this be expanded initially? default is false
+				var initiallyExpanded = q.InitiallyExpanded ?? false;
 
-                // use the icon or default to question-circle
-                var icon = Text.First(q.Icon, "fa-question-circle");
+				// use the icon or default to question-circle
+				var icon = Text.First(q.Icon, "fa-question-circle");
 
-                <div class="co-accordion-item sc-element" data-filterelem="@Json.Encode(categories)">
-                    @Edit.Toolbar(q, actions: "edit")
-                    <div id="a-@q.EntityId" class='co-accordion-title @(initiallyExpanded ? "active" : "") sc-element'>
-                        <h2 @Edit.Attribute("title", AdminHelperText(q))>
-                            <span><i class="co-icon fas @icon" aria-hidden="true"></i></span>
-                            @Tags.Nl2Br(q.Title)
-                        </h2>
-                    </div>
+				<div class="co-accordion-item" data-filterelem="@qCats" @Edit.TagToolbar(q, actions: "edit")>
+						@* title bar with expansion icon *@
+						<div id="a-@q.EntityId" class='co-accordion-title @(initiallyExpanded ? "active" : "")'>
+							<h2 @Edit.Attribute("title", AdminHelperText(q))>
+								<span><i class="co-icon fas @icon" aria-hidden="true"></i></span>
+								@Tags.Nl2Br(q.Title)
+							</h2>
+						</div>
 
-                    @* Show the answer; compact or expanded *@
-                    <div class="co-accordion-content" style='@(initiallyExpanded ? "display:block;" : "")'>
-                        @Html.Raw(q.Text)
-                    </div>
-                </div>
-            }
-        </div>
+						@* Show the answer; compact or expanded *@
+						<div class="co-accordion-content" style='@(initiallyExpanded ? "display:block;" : "")'>
+							@Html.Raw(q.Text)
+						</div>
+				</div>
+			}
+			</div>
     </div>
-
-    </div>
+	</div>
 </div>
 
 <script src="@App.Path/dist/app-bundle.min.js" data-enableoptimizations="true" ></script>
@@ -62,30 +60,29 @@
 
         // if we have categories, then filter with these
         if(filterCats != null && filterCats.Any())
-            questions = questions.Where(q => ((Dynlist)q.Category)
-                    .Any(qc => filterCats.Any(fc => fc == qc)));
+					questions = questions.Where(q => ((Dynlist)q.Category)
+						.Any(qCat => filterCats.Any(fCat => fCat == qCat)));
 
-        // now sort the results as expected
-        if (Content.SortOrder == "DESC-id-ASC")
-        {
-            return questions.OrderByDescending(q => q.Priority).ThenBy(q => q.EntityId);
+				// now sort by priority, big numbers first
+				var sorted = questions.OrderByDescending(q => q.Priority);
+
+        // now sort the results by the second parameter
+        if (Content.SortOrder == "DESC-id-ASC") {
+					return sorted.ThenBy(q => q.EntityId);
+        } else if (Content.SortOrder == "DESC-id-DESC") {
+					return sorted.ThenByDescending(q => q.EntityId);
+        } else if (Content.SortOrder == "DESC-title-ASC") {
+					return sorted.ThenBy(q => q.Title);
         }
-        else if (Content.SortOrder == "DESC-id-DESC")
-        {
-            return questions.OrderByDescending(q => q.Priority).ThenByDescending(q => q.EntityId);
-        }
-        else if (Content.SortOrder == "DESC-title-ASC")
-        {
-            return questions.OrderByDescending(q => q.Priority).ThenBy(q => q.Title);
-        }
-        return questions;
+
+				// if no additional sort order was used, return sorted by priority only
+        return sorted;
     }
 
     // Create a help-label for admins to better manage the questions
     string AdminHelperText(dynamic q) 
     {
         var itemCategories = (q.Category as Dynlist).Select(cat => cat.Name);
-
         return q.InternalTitle + ", " 
             + "Prio: " + q.Priority + ", "
             + "Categories: " + String.Join(",", itemCategories);
