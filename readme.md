@@ -1,9 +1,10 @@
 <image src="app-icon.png" width="25%" align="right">
+
 # 2sxc FAQ App 2.04
 
 This is a simple FAQ App to use or modify as needed. 
 
-1. Screenshots and more descriptions can be found in the [app-catalog](https://2sxc.org/en/apps/app/faq-with-categories-and-filtering)
+Screenshots and more descriptions can be found in the [app-catalog](https://2sxc.org/en/apps/app/faq-with-categories-and-filtering)
 
 ## Recommendations
 
