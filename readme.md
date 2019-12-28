@@ -1,3 +1,4 @@
+<image src="app-icon.png" width="25%" align="right">
 # 2sxc FAQ App 2.04
 
 This is a simple FAQ App to use or modify as needed. 
