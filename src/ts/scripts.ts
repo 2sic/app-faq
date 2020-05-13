@@ -2,7 +2,7 @@ import { PolyFills } from './components/array_find';
 
 export class App {
     constructor(moduleid: number) {
-        this.main(moduleid); 
+        this.main(moduleid);
     }
 
     main(moduleid: number) {
@@ -30,7 +30,7 @@ export class App {
             }, 500);
         });
 
-        // Get hash from url and open the according questoin item. 
+        // Get hash from url and open the according questoin item.
         if (window.location.hash) {
             var hash = window.location.hash;
             if ($(hash).length > 0) {
@@ -77,7 +77,7 @@ export class App {
                 });
 
                 wrapperParent.css('min-height', wrapper.height() + 'px');
-                
+
                 setTimeout(function () {
                     wrapper.css('opacity', 1);
                 }, 200)

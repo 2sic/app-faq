@@ -1,11 +1,10 @@
 {
   "name": "2sic-faq-app",
-  "version": "02.04.00",
+  "version": "03.00.00",
   "description": "The standard App for 2sic to use as FAQ.",
-  "main": "gulpfile.js",
+  "main": "(none)",
   "scripts": {
-    "// not done develop": "webpack --config webpack.dev.js",
-    "build": "webpack --config webpack.config.js"
+    "build-prod": "webpack"
   },
   "author": "2sic internet solutions",
   "license": "MIT",

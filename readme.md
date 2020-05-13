@@ -1,21 +1,23 @@
-<image src="app-icon.png" width="25%" align="right">
+<image src="app-icon.png" align="right" width="200px">
 
-# 2sxc FAQ App 2.04
+# FAQ App for DNN (DotNetNuke)
 
-This is a simple FAQ App to use or modify as needed. 
+This is a simple FAQ App to use or modify as needed.
 
-Screenshots and more descriptions can be found in the [app-catalog](https://2sxc.org/en/apps/app/faq-with-categories-and-filtering)
+## Installing the app
 
-## Recommendations
+To install the app, follow the ["Installing FAQ" checklist](https://azing.org/2sxc/r/_fpa_ZHf)
 
-* Styled using Bootstrap 4, so works with Bootstrap 4. Other CSS frameworks will require some manual work.
+## Customizing the app
 
-## Requirements for Installing / Using
+### Configuration (Settings, Resources)
 
-* DNN 7.4.2+
-* 2sxc 10.24+
+You can enable/disable categories in the app settings and change the label for the "Show all" button in the app resources.
 
-## Requirement for Customizing
+### Style
 
-* TypeScript 3.4+
-* WebPack 4.3+
+If you want to customize the CSS, you will usually follow the ["Create Custom Styles in a Standard 2sxc App" checklist](https://azing.org/2sxc/r/gg_aB9FD)
+
+## Screenshots
+
+Read more about it in the [App Catalog](https://2sxc.org/en/apps/app/faq-app-for-2sxc-v3)
