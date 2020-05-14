@@ -29,7 +29,7 @@
 			<div class="question-wrapper">
 			@foreach (var q in Code.GetQuestionsSorted()) {
 				// get the categories for interactive (JavaScript) filtering
-				var qCats = Json.Encode( (q.Category as Dynlist).Select(x => x.Key) );
+				var qCats = Json.Encode( (q.Categories as Dynlist).Select(x => x.Key) );
 
 				// should this be expanded initially? default is false
 				var initiallyExpanded = q.InitiallyExpanded ?? false;
@@ -45,13 +45,13 @@
           <div id="a-@q.EntityId" class='co-accordion-title @(initiallyExpanded ? "active" : "")'>
             <h2 @Code.AdminHelperLabel(q)>
               <span><i class="co-icon fas @icon" aria-hidden="true"></i></span>
-              @Tags.Nl2Br(q.Title)
+              @Tags.Nl2Br(q.Question)
             </h2>
           </div>
 
           @* Show the answer; compact or expanded *@
           <div class='co-accordion-content @(initiallyExpanded ? "d-block" : "")'>
-            @Render.All(q, field: "DesignedContent", merge: q.Text)
+            @Render.All(q, field: "AnswerInnerContent", merge: q.Answer)
           </div>
 				</div>
 			}
