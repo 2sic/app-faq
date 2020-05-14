@@ -1,6 +1,6 @@
 <image src="app-icon.png" align="right" width="200px">
 
-# FAQ App for DNN (DotNetNuke)
+# FAQ App 3 for DNN (DotNetNuke)
 
 This is a simple FAQ App to use or modify as needed.
 
