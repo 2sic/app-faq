@@ -1,6 +1,6 @@
 {
-  "name": "2sic-faq-app",
-  "version": "03.00.01",
+  "name": "app-faq4",
+  "version": "04.00.00",
   "description": "The standard App for 2sic to use as FAQ.",
   "main": "(none)",
   "scripts": {
