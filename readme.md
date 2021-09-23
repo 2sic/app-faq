@@ -7,6 +7,7 @@ This is a simple FAQ App to use or modify as needed.
 ## Installing the app
 
 To install the app, follow the ["Installing FAQ" checklist](https://azing.org/2sxc/r/_fpa_ZHf)
+> Note: FAQ v2.4.0 and higher requires 2sxc 10.24+
 
 ## Customizing the app
 
