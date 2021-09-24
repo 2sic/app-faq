@@ -1,7 +1,6 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @using ToSic.Sxc.Blocks;
-@using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 
 @{
   // Get some helper commands for later on
@@ -13,18 +12,17 @@
 <div class="app-faq4-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: "+contentitems&pos=2?contentType=Question")>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
-    @if(App.Settings.UseCategories && Content.Categories.Count > 1) {
+    @if(faqSettings.UseCategories && faqSettings.Categories.Count > 1) {
 			<div class="app-faq4-category-wrapper" @Edit.TagToolbar(toolbar: new [] {
-        "toolbar=empty",
+        "toolbar=empty&hover=left",
         "contentitems?contentType=Category",
-        "settings&hover=left"
       })>
         <ul>
-          <li class="btn btn-primary" data-filter="nofilter">
-            @App.Resources.LabelShowAll
+          <li class="btn btn-outline-primary" data-filter="nofilter">
+            @Resources.LabelShowAll
           </li>
           @foreach (var c in Content.Categories) {
-            <li class="btn btn-primary" data-filter="@c.Key">
+            <li class="btn btn-outline-primary" data-filter="@c.Key">
               @c.Name
             </li>
           }
@@ -37,7 +35,7 @@
 			<div class="app-faq4-question-wrapper">
 			@foreach (var q in helpers.GetQuestionsSorted()) {
 				// get the categories for interactive (JavaScript) filtering
-				var qCats = Json.Encode( (q.Categories as Dynlist).Select(x => x.Key) );
+				var qCats = Json.Encode(AsList(q.Categories as object).Select(x => x.Key) );
 
 				// should this be expanded initially? default is false
 				var initiallyExpanded = q.InitiallyExpanded ?? false;
@@ -49,18 +47,18 @@
           "-layout",
           "%new&show=true?contentType=Question&entityId=0"
         })>
-						@* title bar with expansion icon *@
-						<div id="a-@q.EntityId" class='app-faq4-title @(initiallyExpanded ? "active" : "")'>
-							<h2 @Edit.Attribute("title", helpers.AdminHelperLabel(q))>
-								<span><i class="fas @icon" aria-hidden="true"></i></span>
-								@Tags.Nl2Br(q.Question)
-							</h2>
-						</div>
+          @* title bar with expansion icon *@
+          <div id="a-@q.EntityId" class='app-faq4-title @(initiallyExpanded ? "active" : "")'>
+            <h2 @helpers.AdminHelperLabel(q)>
+              <span><i class="fas @icon" aria-hidden="true"></i></span>
+              @Tags.Nl2Br(q.Question)
+            </h2>
+          </div>
 
-						@* Show the answer; compact or expanded *@
-						<div class="app-faq4-content" style='@(initiallyExpanded ? "display:block;" : "")'>
-							@Render.All(q, field: "DesignedContent", merge: q.Answer)
-						</div>
+          @* Show the answer; compact or expanded *@
+          <div class='app-faq4-content @(initiallyExpanded ? "d-block" : "")'>
+            @Render.All(q, field: "AnswerInnerContent", merge: q.Answer)
+          </div>
 				</div>
 			}
 			</div>

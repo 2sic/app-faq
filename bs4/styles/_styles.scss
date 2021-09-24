@@ -120,7 +120,7 @@
       }
     }
 
-    .app-faq4-content {
+    .co-content {
       margin-bottom: $grid-gutter-width/3;
 
       @include media-breakpoint-up(md) {
@@ -129,7 +129,7 @@
     }
   }
 
-  .app-faq4-category-wrapper {
+  .app-faq4-question-wrapper {
     transition: opacity .4s ease-in-out;
   }
 

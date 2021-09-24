@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="11.01.00" ExportDate="2020-05-15T10:47:48.6714399+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.05.00" ExportDate="2021-09-24T10:35:15.1419212+02:00">
   <Header>
-    <App Guid="a5b11a5f-0f25-41bd-848f-12d2dcc190e3" />
-    <Language Default="en-US" />
+    <App Guid="468b2772-43bb-4008-9ded-396bd5eaab4f" />
+    <Language Default="en-us" />
     <Dimensions>
       <Dimension DimensionID="152" Name="English (United States)" SystemKey="" ExternalKey="en-US" Active="true" />
       <Dimension DimensionID="153" Name="Deutsch (Deutschland)" SystemKey="" ExternalKey="de-DE" Active="true" />
@@ -181,7 +181,7 @@
             <Value Key="InputType" Value="" Type="String" />
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="3a31cfb9-a20e-4a43-812e-c531b7b1f154" Json="True" KeyNumber="2167">
-            <Value Key="RowCount" Value="1.0" Type="Number" />
+            <Value Key="RowCount" Value="1" Type="Number" />
           </Entity>
         </Attribute>
         <Attribute StaticName="GroupQA" Type="Empty" IsTitle="false">
@@ -223,7 +223,7 @@
             <Value Key="InputType" Value="" Type="String" />
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="2aaf4e9a-3ed0-47cb-91d6-8d7c38c56110" Json="True" KeyNumber="2169">
-            <Value Key="RowCount" Value="2.0" Type="Number" />
+            <Value Key="RowCount" Value="2" Type="Number" />
           </Entity>
         </Attribute>
         <Attribute StaticName="Answer" Type="String" IsTitle="false">
@@ -345,13 +345,9 @@
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="e557ebd0-ffc2-4b86-9fd5-21af60830c9b" Json="True" KeyNumber="2174">
-            <Value Key="AddressMask" Value="" Type="String" />
-            <Value Key="Decimals" Value="0.0" Type="Number" />
-            <Value Key="InputType" Value="" Type="String" />
-            <Value Key="Max" Value="9999999.0" Type="Number" />
-            <Value Key="Min" Value="0.0" Type="Number" />
-            <Value Key="ValidationRegEx" Value="" Type="String" />
-            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="Decimals" Value="0" Type="Number" />
+            <Value Key="Max" Value="9999999" Type="Number" />
+            <Value Key="Min" Value="0" Type="Number" />
           </Entity>
         </Attribute>
         <Attribute StaticName="InitiallyExpanded" Type="Boolean" IsTitle="false">
@@ -465,20 +461,45 @@
   </AttributeSets>
   <Entities>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="2SexyContent-App" AttributeSetName="2SexyContent-App" EntityGUID="41a79a08-f461-4b47-9bc6-a5717b7bc0c2" Json="True" KeyNumber="133">
-      <Value Key="AllowRazorTemplates" Value="True" Type="Boolean" />
-      <Value Key="AllowTokenTemplates" Value="False" Type="Boolean" />
-      <Value Key="Description" Value="" Type="String" />
-      <Value Key="DisplayName" Value="FAQ (Questions &amp; Answers)" Type="String" />
+      <Value Key="AllowRazorTemplates" Value="True" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="AllowTokenTemplates" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
       <Value Key="DisplayName" Value="FAQ (Fragen &amp; Antworten)" Type="String">
         <Dimension DimensionID="153" ReadOnly="false" />
       </Value>
-      <Value Key="Folder" Value="FAQ3" Type="String" />
-      <Value Key="Hidden" Value="False" Type="Boolean" />
-      <Value Key="OriginalId" Value="a5b11a5f-0f25-41bd-848f-12d2dcc190e3" Type="String" />
-      <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String" />
-      <Value Key="RequiredVersion" Value="11.00.00" Type="String" />
-      <Value Key="SupportsAjaxReload" Value="False" Type="Boolean" />
-      <Value Key="Version" Value="03.00.01" Type="String" />
+      <Value Key="DisplayName" Value="FAQ (Questions &amp; Answers)" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Folder" Value="Faq4" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Hidden" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="OriginalId" Value="a5b11a5f-0f25-41bd-848f-12d2dcc190e3" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredOqtaneVersion" Value="02.02.00" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredVersion" Value="12.05.00" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="SupportsAjaxReload" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Version" Value="04.00.00" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="1bdd64e8-da9f-43be-a87f-4da1ffe29ab5" KeyNumber="133">
       <Value Key="UseCategories" Value="True" Type="Boolean" />
@@ -493,19 +514,60 @@
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="14f785f2-a337-4ac3-ac42-3d19313b0423" Json="True">
       <Value Key="ContentDemoEntity" Value="9296dbdc-16eb-4974-83ce-640a6f2ee482" Type="Entity" />
-      <Value Key="ContentTypeStaticName" Value="3e136876-20ca-4ca5-af09-163f4cb3a3a5" Type="String" />
-      <Value Key="IsHidden" Value="False" Type="Boolean" />
-      <Value Key="ListContentTypeStaticName" Value="" Type="String" />
-      <Value Key="ListPresentationTypeStaticName" Value="" Type="String" />
-      <Value Key="Location" Value="Portal File System" Type="String" />
-      <Value Key="Name" Value="FAQ" Type="String" />
-      <Value Key="Path" Value="_FAQ.cshtml" Type="String" />
-      <Value Key="PresentationTypeStaticName" Value="" Type="String" />
-      <Value Key="PublishData" Value="False" Type="Boolean" />
-      <Value Key="StreamsToPublish" Value="Default,ListContent" Type="String" />
-      <Value Key="Type" Value="C# Razor" Type="String" />
-      <Value Key="UseForList" Value="False" Type="Boolean" />
-      <Value Key="ViewNameInUrl" Value="" Type="String" />
+      <Value Key="ContentTypeStaticName" Value="3e136876-20ca-4ca5-af09-163f4cb3a3a5" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="" Type="Hyperlink">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Identifier" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="IsHidden" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="ListContentTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Location" Value="Site" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Name" Value="FAQ" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Path" Value="bs4/_FAQ.cshtml" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="PresentationTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="PublishData" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingDisabled" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingStreams" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="StreamsToPublish" Value="Default,ListContent" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Type" Value="C# Razor" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="UseForList" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewController" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewNameInUrl" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="979d5454-09f3-4485-b3af-9fb9dfa69a53" Json="True">
       <Value Key="App" Value="Default" Type="String" />
@@ -1184,6 +1246,11 @@
       <Value Key="Template" Value="feae2860-118a-42ef-b03a-336de0ea7c38" Type="String" />
       <Value Key="Title" Value="" Type="String" />
     </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="b8c94c60-ed75-43d6-8fc9-c1b42a37677d" Json="True">
+      <Value Key="Content" Value="88894066-74bf-4ae1-9019-bfad21e24658,72441d1a-d31e-45b0-ba27-bb03c0aa43ce,null,a019aab4-2c31-48cd-80b0-12a022ad7602,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null" Type="Entity" />
+      <Value Key="Presentation" Value="null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null" Type="Entity" />
+      <Value Key="Template" Value="14f785f2-a337-4ac3-ac42-3d19313b0423" Type="Entity" />
+    </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Question" EntityGUID="88894066-74bf-4ae1-9019-bfad21e24658">
       <Value Key="Answer" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
@@ -1272,6 +1339,11 @@
         <Dimension DimensionID="153" ReadOnly="false" />
       </Value>
     </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="f16ba7b8-988b-47f6-a661-affac3ec8a17" Json="True">
+      <Value Key="Content" Value="9296dbdc-16eb-4974-83ce-640a6f2ee482" Type="Entity" />
+      <Value Key="Presentation" Value="null" Type="Entity" />
+      <Value Key="Template" Value="14f785f2-a337-4ac3-ac42-3d19313b0423" Type="Entity" />
+    </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="3e136876-20ca-4ca5-af09-163f4cb3a3a5" AttributeSetName="ViewConfiguration" EntityGUID="9296dbdc-16eb-4974-83ce-640a6f2ee482">
       <Value Key="Categories" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0,adcfe352-0cd2-4743-b082-91aea79965f3" Type="Entity" />
       <Value Key="SortOrder" Value="DESC-id-ASC" Type="String">
@@ -1287,6 +1359,11 @@
         <Dimension DimensionID="153" ReadOnly="false" />
       </Value>
     </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="4b843020-65b7-4d6b-967d-5b05a41d79d0" Json="True">
+      <Value Key="Content" Value="null" Type="Entity" />
+      <Value Key="Presentation" Value="null" Type="Entity" />
+      <Value Key="Template" Value="14f785f2-a337-4ac3-ac42-3d19313b0423" Type="Entity" />
+    </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Question" EntityGUID="76c545f0-a25e-49f2-8f1d-c0f88cf64df5">
       <Value Key="Answer" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String" />
       <Value Key="Categories" Value="adcfe352-0cd2-4743-b082-91aea79965f3" Type="Entity" />
@@ -1300,6 +1377,15 @@
       <Value Key="Question" Value="Demo Frage" Type="String">
         <Dimension DimensionID="153" ReadOnly="false" />
       </Value>
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="9b019f71-80e1-41b8-8286-8c8d9aaf99d0" Json="True">
+      <Value Key="Content" Value="null" Type="Entity" />
+      <Value Key="Presentation" Value="null" Type="Entity" />
+      <Value Key="Template" Value="14f785f2-a337-4ac3-ac42-3d19313b0423" Type="Entity" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="48c214a9-b120-47a7-b8f8-85e9cff9a124" Json="True">
+      <Value Key="Content" Value="9296dbdc-16eb-4974-83ce-640a6f2ee482" Type="Entity" />
+      <Value Key="Template" Value="14f785f2-a337-4ac3-ac42-3d19313b0423" Type="Entity" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="3937fa17-ef2d-40a7-b089-64164eb10bab" AttributeSetName="2sxcPolymorphismConfiguration" EntityGUID="39d6490b-7f92-40c9-ad39-1e0fa6a705a1" Json="True">
       <Value Key="Mode" Value="Koi?cssFramework" Type="String">
@@ -1394,6 +1480,6 @@
   </Entities>
   <PortalFiles />
   <PortalFolders>
-    <Folder Id="9934" RelativePath="adam/FAQ3/" />
+    <Folder Id="13428" RelativePath="adam/FAQ4/" />
   </PortalFolders>
 </SexyContent>
