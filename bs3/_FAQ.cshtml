@@ -1,8 +1,6 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @using ToSic.Sxc.Blocks;
-@using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
-
 @{
   // Get some helper commands for later on
   var helpers = CreateInstance("../shared/Helpers.cs");
@@ -37,11 +35,9 @@
 			<div class="app-faq4-question-wrapper">
 			@foreach (var q in helpers.GetQuestionsSorted()) {
 				// get the categories for interactive (JavaScript) filtering
-				var qCats = Json.Encode( (q.Categories as Dynlist).Select(x => x.Key) );
-
+				var qCats = Json.Encode(AsList(q.Categories as object).Select(x => x.Key) );
 				// should this be expanded initially? default is false
 				var initiallyExpanded = q.InitiallyExpanded ?? false;
-
 				// use the icon or default to question-circle
 				var icon = Text.First(q.Icon, "fa-question-circle");
 

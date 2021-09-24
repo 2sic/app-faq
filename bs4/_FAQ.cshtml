@@ -36,10 +36,8 @@
 			@foreach (var q in helpers.GetQuestionsSorted()) {
 				// get the categories for interactive (JavaScript) filtering
 				var qCats = Json.Encode(AsList(q.Categories as object).Select(x => x.Key) );
-
 				// should this be expanded initially? default is false
 				var initiallyExpanded = q.InitiallyExpanded ?? false;
-
 				// use the icon or default to question-circle
 				var icon = Text.First(q.Icon, "fa-question-circle");
 
