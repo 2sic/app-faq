@@ -7,8 +7,9 @@
   var helpers = CreateInstance("../shared/Helpers.cs");
   // Merge the settings on Content with the predefined Settings
   var faqSettings = AsDynamic(Content, Settings);
-}
 
+  var json = GetService<ToSic.Sxc.Web.IJsonService>();
+}
 <div class="app-faq4-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: "+contentitems&pos=2?contentType=Question")>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
@@ -35,7 +36,8 @@
 			<div class="app-faq4-question-wrapper">
 			@foreach (var q in helpers.GetQuestionsSorted()) {
 				// get the categories for interactive (JavaScript) filtering
-				var qCats = Json.Encode(AsList(q.Categories as object).Select(x => x.Key) );
+        // 2dm @2mh - I changed this
+				var qCats = json.ToJson(AsList(q.Categories as object).Select(x => x.Key) );
 				// should this be expanded initially? default is false
 				var initiallyExpanded = q.InitiallyExpanded ?? false;
 				// use the icon or default to question-circle
