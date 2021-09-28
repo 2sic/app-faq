@@ -1,7 +1,6 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @using ToSic.Sxc.Blocks;
-
 @{
   // Get some helper commands for later on
   var helpers = CreateInstance("../shared/Helpers.cs");
@@ -9,15 +8,22 @@
   var faqSettings = AsDynamic(Content, Settings);
 
   var json = GetService<ToSic.Sxc.Web.IJsonService>();
+
+  var categoryToolbarConf = new [] {
+    "toolbar=empty&hover=left",
+    "contentitems?contentType=Category",
+  };
+
+  var questionToolbarConf = new [] {
+    "-layout",
+    "%new&show=true?contentType=Question&entityId=0"
+  };
 }
-<div class="app-faq4-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: "+contentitems&pos=2?contentType=Question")>
+<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: "+contentitems&pos=2?contentType=Question")>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
-    @if(faqSettings.UseCategories && faqSettings.Categories.Count > 1) {
-			<div class="app-faq4-category-wrapper" @Edit.TagToolbar(toolbar: new [] {
-        "toolbar=empty&hover=left",
-        "contentitems?contentType=Category",
-      })>
+    @if (faqSettings.UseCategories && faqSettings.Categories.Count > 1) {
+			<div class="app-faq4-category-wrapper" @Edit.TagToolbar(toolbar: categoryToolbarConf)>
         <ul>
           <li class="btn btn-outline-primary" data-filter="nofilter">
             @Resources.LabelShowAll
@@ -36,19 +42,15 @@
 			<div class="app-faq4-question-wrapper">
 			@foreach (var q in helpers.GetQuestionsSorted()) {
 				// get the categories for interactive (JavaScript) filtering
-        // 2dm @2mh - I changed this
 				var qCats = json.ToJson(AsList(q.Categories as object).Select(x => x.Key) );
 				// should this be expanded initially? default is false
 				var initiallyExpanded = q.InitiallyExpanded ?? false;
 				// use the icon or default to question-circle
 				var icon = Text.First(q.Icon, "fa-question-circle");
 
-				<div data-filterelem="@qCats" @Edit.TagToolbar(q, toolbar: new [] {
-          "-layout",
-          "%new&show=true?contentType=Question&entityId=0"
-        })>
+				<div data-filterelem="@qCats" @Edit.TagToolbar(q, toolbar: questionToolbarConf)>
           @* title bar with expansion icon *@
-          <div id="a-@q.EntityId" class='app-faq4-title @(initiallyExpanded ? "active" : "")'>
+          <div id="hash-@q.EntityId" class='app-faq4-title @(initiallyExpanded ? "active" : "")'>
             <h2 @helpers.AdminHelperLabel(q)>
               <span><i class="fas @icon" aria-hidden="true"></i></span>
               @Tags.Nl2Br(q.Question)

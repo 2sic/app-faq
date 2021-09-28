@@ -8,7 +8,7 @@
   var faqSettings = AsDynamic(Content, Settings);
 }
 
-<div class="app-faq4-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: "+contentitems&pos=2?contentType=Question")>
+<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: "+contentitems&pos=2?contentType=Question")>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
     @if(App.Settings.UseCategories && Content.Categories.Count > 1) {
@@ -46,7 +46,7 @@
           "%new&show=true?contentType=Question&entityId=0"
         })>
 						@* title bar with expansion icon *@
-						<div id="a-@q.EntityId" class='app-faq4-title @(initiallyExpanded ? "active" : "")'>
+						<div id="hash-@q.EntityId" class='app-faq4-title @(initiallyExpanded ? "active" : "")'>
 							<h2 @Edit.Attribute("title", helpers.AdminHelperLabel(q))>
 								<span><i class="fas @icon" aria-hidden="true"></i></span>
 								@Tags.Nl2Br(q.Question)

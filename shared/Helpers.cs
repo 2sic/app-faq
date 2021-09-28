@@ -19,14 +19,11 @@ public class Helpers: Custom.Hybrid.Code12
     var sorted = questions.OrderByDescending(q => q.Priority);
 
     // now sort the results by the second parameter
-    if (Content.SortOrder == "DESC-id-ASC") {
-      return sorted.ThenBy(q => q.EntityId);
-    } else if (Content.SortOrder == "DESC-id-DESC") {
-      return sorted.ThenByDescending(q => q.EntityId);
-    } else if (Content.SortOrder == "DESC-title-ASC") {
-      return sorted.ThenBy(q => q.Title);
+    switch(Content.SortOrder as string) {
+      case "DESC-id-ASC": return sorted.ThenBy(q => q.EntityId);
+      case "DESC-id-DESC": return sorted.ThenByDescending(q => q.EntityId);
+      case "DESC-title-ASC": return sorted.ThenBy(q => q.Title);
     }
-
     // if no additional sort order was used, return sorted by priority only
     return sorted;
   }
