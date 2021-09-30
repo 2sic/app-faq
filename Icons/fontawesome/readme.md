@@ -1,3 +1,5 @@
-# Font Awesome CSS
+# FontAwesome CSS and Fonts
 
-This is just for the icon picker to work. It's only for the edit dialog, at runtime the icons are retrieved from the CDN.
+These are only included for the UI to provide an icon picker. 
+
+During Runtime, these icons should come from the FontAwesome CDN.
