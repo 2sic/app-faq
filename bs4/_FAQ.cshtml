@@ -7,23 +7,16 @@
   // Merge the settings on Content with the predefined Settings
   var faqSettings = AsDynamic(Content, Settings);
 
-  var json = GetService<ToSic.Sxc.Web.IJsonService>();
-
-  var categoryToolbarConf = new [] {
-    "toolbar=empty&hover=left",
-    "contentitems?contentType=Category",
-  };
-
-  var questionToolbarConf = new [] {
-    "-layout",
-    "%new&show=true?contentType=Question&entityId=0"
-  };
+  // Toolbar Configurations for later
+  var mainToolbar = new [] { "+contentitems&pos=2?contentType=Question" };  // add the content-items button
+  var catToolbar = new [] { "toolbar=empty&hover=left", "contentitems?contentType=Category" };
+  var qToolbar = new [] { "-layout", "%new&show=true?contentType=Question&entityId=0" };
 }
-<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: "+contentitems&pos=2?contentType=Question")>
+<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: mainToolbar )>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
     @if (faqSettings.UseCategories && faqSettings.Categories.Count > 1) {
-			<div class="app-faq4-category-wrapper" @Edit.TagToolbar(toolbar: categoryToolbarConf)>
+			<div class="app-faq4-category-wrapper" @Edit.TagToolbar(toolbar: catToolbar)>
         <ul>
           <li class="btn btn-outline-primary" data-filter="nofilter">
             @Resources.LabelShowAll
@@ -42,13 +35,11 @@
 			<div class="app-faq4-question-wrapper">
 			@foreach (var q in helpers.GetQuestionsSorted()) {
 				// get the categories for interactive (JavaScript) filtering
-				var qCats = json.ToJson(AsList(q.Categories as object).Select(x => x.Key) );
-				// should this be expanded initially? default is false
-				var initiallyExpanded = q.InitiallyExpanded ?? false;
-				// use the icon or default to question-circle
-				var icon = Text.First(q.Icon, "fa-question-circle");
+        var qCats = AsList(q.Categories as object).Select(x => x.Key);
+				var initiallyExpanded = Convert.ToBool(q.InitiallyExpanded, fallback: false);
+				var icon = Text.First(q.Icon, "fa-question-circle");                  // icon? default ...-circle
 
-				<div data-filterelem="@qCats" @Edit.TagToolbar(q, toolbar: questionToolbarConf)>
+				<div data-filterelem="@Convert.Json.ToJson(qCats)" @Edit.TagToolbar(q, toolbar: qToolbar)>
           @* title bar with expansion icon *@
           <div id="hash-@q.EntityId" class='app-faq4-title @(initiallyExpanded ? "active" : "")'>
             <h2 @helpers.AdminHelperLabel(q)>

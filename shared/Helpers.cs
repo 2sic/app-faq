@@ -5,7 +5,9 @@ using System.Collections.Generic;
 
 public class Helpers: Custom.Hybrid.Code12
 {
-  // Get all the questions and sort as is configured
+  /// <summary>
+  /// Get all the questions and sort as is configured
+  /// </summary>
   public IEnumerable<dynamic> GetQuestionsSorted() {
     var questions = AsList(App.Data["Question"] as object);
     var filterCats = AsList(Content.Categories as object);
@@ -23,13 +25,13 @@ public class Helpers: Custom.Hybrid.Code12
       case "DESC-id-ASC": return sorted.ThenBy(q => q.EntityId);
       case "DESC-id-DESC": return sorted.ThenByDescending(q => q.EntityId);
       case "DESC-title-ASC": return sorted.ThenBy(q => q.Title);
+      default: return sorted; // if no additional sort order was used, return sorted by priority only
     }
-    // if no additional sort order was used, return sorted by priority only
-    return sorted;
   }
 
-  // Create a help-label for admins to better manage the questions
-
+  /// <summary>
+  /// Create a hover-help-label for admins to better manage the questions
+  /// </summary>
   public object AdminHelperLabel(dynamic q) {
     var itemCategories = AsList(q.Categories as object).Select(cat => cat.Name);
     var label = q.InternalTitle + ", "

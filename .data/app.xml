@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.05.00" ExportDate="2021-09-27T13:57:51.8226441+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.05.00" ExportDate="2021-09-30T15:06:44.9997427+02:00">
   <Header>
     <App Guid="468b2772-43bb-4008-9ded-396bd5eaab4f" />
     <Language Default="en-us" />
@@ -284,27 +284,61 @@
         </Attribute>
         <Attribute StaticName="Icon" Type="String" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="f685c5a3-ebcd-40e4-9a80-5d03e67b5895" Json="True" KeyNumber="2171">
-            <Value Key="CustomJavaScript" Value="" Type="String" />
-            <Value Key="DefaultValue" Value="" Type="String" />
-            <Value Key="Disabled" Value="False" Type="Boolean" />
-            <Value Key="InputType" Value="string-font-icon-picker" Type="String" />
-            <Value Key="Name" Value="Symbol (optional)" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;Optional icon.&lt;/p&gt;" Type="String" />
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-font-icon-picker" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Symbol (optional)" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="Notes" Value="&lt;p&gt;Das Symbol ist optional.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="153" ReadOnly="false" />
             </Value>
-            <Value Key="Required" Value="False" Type="Boolean" />
-            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="Notes" Value="&lt;p&gt;Optional icon.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="da97204d-fbae-4f6c-a9d4-5a74e14f61b4" Json="True" KeyNumber="2171">
-            <Value Key="DropdownValues" Value="" Type="String" />
-            <Value Key="InputType" Value="" Type="String" />
+            <Value Key="DropdownValues" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-font-icon-picker" AttributeSetName="@string-font-icon-picker" EntityGUID="c388f144-05ec-4711-a8ac-1a83ed48d905" Json="True" KeyNumber="2171">
-            <Value Key="CssPrefix" Value=".fa-" Type="String" />
-            <Value Key="Files" Value="[App:Path]/dist/lib/icons/css/fontawesome-nobrands.min.css" Type="String" />
-            <Value Key="PreviewCss" Value="fas" Type="String" />
+            <Value Key="CssPrefix" Value=".fa-" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Files" Value="[App:Path]/Icons/fontawesome/css/fontawesome-nobrands.min.css" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="PreviewCss" Value="fas" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
           </Entity>
         </Attribute>
         <Attribute StaticName="GroupControl" Type="Empty" IsTitle="false">
@@ -482,7 +516,7 @@
       <Value Key="Hidden" Value="False" Type="Boolean">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="OriginalId" Value="a5b11a5f-0f25-41bd-848f-12d2dcc190e3" Type="String">
+      <Value Key="OriginalId" Value="" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
       <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String">
@@ -1259,10 +1293,18 @@
         <Dimension DimensionID="153" ReadOnly="false" />
       </Value>
       <Value Key="Categories" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0" Type="Entity" />
-      <Value Key="Icon" Value="fa-question-circle" Type="String" />
-      <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
-      <Value Key="InternalTitle" Value="General question" Type="String" />
-      <Value Key="Priority" Value="2" Type="Number" />
+      <Value Key="Icon" Value="fa-question-circle" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="InternalTitle" Value="General question" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Priority" Value="2" Type="Number">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
       <Value Key="Question" Value="What makes this a good question?" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
@@ -1284,12 +1326,18 @@
         <Dimension DimensionID="153" ReadOnly="false" />
       </Value>
       <Value Key="Categories" Value="45e83638-97b1-417e-bacd-e17b8e8a0ae0" Type="Entity" />
-      <Value Key="Icon" Value="fa-anchor" Type="String" />
-      <Value Key="InitiallyExpanded" Value="False" Type="Boolean" />
+      <Value Key="Icon" Value="fa-anchor" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="True" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
       <Value Key="InternalTitle" Value="General Question 2" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="Priority" Value="4" Type="Number" />
+      <Value Key="Priority" Value="4" Type="Number">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
       <Value Key="Question" Value="How to get started with the FAQ App?" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
@@ -1480,6 +1528,6 @@
   </Entities>
   <PortalFiles />
   <PortalFolders>
-    <Folder Id="13428" RelativePath="adam/Faq4/" />
+    <Folder Id="13428" RelativePath="adam/FAQ4/" />
   </PortalFolders>
 </SexyContent>
