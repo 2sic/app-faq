@@ -2,7 +2,7 @@
 
 # Faq4 App for .net CMSs
 
-> This is a 2sxc App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
+> This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
 
 | Aspect              | Status | Comments or Version |
@@ -21,7 +21,7 @@
 | Bootstrap 4         | ✅    | v4 optimized
 | Bootstrap 5         | ✔️    | Works but not optimized
 
-## Customizing the app
+## Customize the App
 
 You can enable/disable categories in the app settings and change the label for the "Show all" button in the app resources.
 
