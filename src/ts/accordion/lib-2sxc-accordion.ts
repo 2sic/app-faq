@@ -1,4 +1,5 @@
 import { hide, show, toggle } from 'slidetoggle';
+import { AccordionOptions } from './accordion-options-definition';
 
 /*
   This is a shared code used in various 2sxc apps. Make sure that they are in sync, so if you improve it, improve all 2sxc apps which use this. 
@@ -8,13 +9,6 @@ import { hide, show, toggle } from 'slidetoggle';
   The master with the newest / best version must always be the Accordion, the others should then get a fresh copy.
   Because this is shared, all parameters like DOM-IDs etc. must be provided in the Init-call that it can work across apps
 */ 
-
-interface AccordionOptions {
-  tagStickyHeader: string;
-  classIsExpanded: string;
-  attrParent: string;
-  attrChild: string;
-}
 
 export function initAccordion({ domId, options } : { domId: string, options: AccordionOptions }) {
   // get navHight for correct scrollposition
