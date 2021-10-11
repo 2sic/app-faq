@@ -14,8 +14,8 @@
 | Live Demo           | ➖    | 
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/_fpa_ZHf) on [azing.org](https://azing.org/2sxc)
 | Source & License    | ✅    | included, MIT
-| App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/faq-app-for-2sxc-v3)
-| Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/faq-app-for-2sxc-v3)
+| App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/faq4-hybrid-for-dnn-and-oqtane)
+| Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/faq4-hybrid-for-dnn-and-oqtane)
 | Best Practices      | ✅    | Uses v12.05 conventions
 | Bootstrap 3         | ✅    | v3 optimized
 | Bootstrap 4         | ✅    | v4 optimized
