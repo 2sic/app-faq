@@ -35,5 +35,3 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
     * No more jQuery
     * Renamed AppFolder to contain latest version
     * App has a new GUID for identification allowing side-by-side install with older swiper
-
-TODO: @2ro - standardize code of accordions across apps
