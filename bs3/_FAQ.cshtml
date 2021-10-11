@@ -6,6 +6,7 @@
   var helpers = CreateInstance("../shared/Helpers.cs");
   // Merge the settings on Content with the predefined Settings
   var faqSettings = AsDynamic(Content, Settings);
+  var render = GetService<ToSic.Sxc.Blocks.IRenderService>();
 }
 
 <div class="app-faq4-js-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: "+contentitems&pos=2?contentType=Question")>
@@ -55,7 +56,7 @@
 
 						@* Show the answer; compact or expanded *@
 						<div class="app-faq4-content" style='@(initiallyExpanded ? "display:block;" : "")'>
-							@Render.All(q, field: "DesignedContent", merge: q.Answer)
+							@render.All(q, field: "DesignedContent", merge: q.Answer)
 						</div>
 				</div>
 			}

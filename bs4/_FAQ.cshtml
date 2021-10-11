@@ -11,6 +11,7 @@
   var mainToolbar = new [] { "+contentitems&pos=2?contentType=Question" };  // add the content-items button
   var catToolbar = new [] { "toolbar=empty&hover=left", "contentitems?contentType=Category" };
   var qToolbar = new [] { "-layout", "%new&show=true?contentType=Question&entityId=0" };
+  var render = GetService<ToSic.Sxc.Blocks.IRenderService>();
 }
 <div class="app-faq4-js-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: mainToolbar )>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
@@ -53,7 +54,7 @@
 
           @* Show the answer; compact or expanded *@
           <div class='app-faq4-content @(initiallyExpanded ? "is-expanded" : "")' data-accordion-child="@q.EntityId">
-            @Render.All(q, field: "AnswerInnerContent", merge: q.Answer)
+            @render.All(q, field: "AnswerInnerContent", merge: q.Answer)
           </div>
         </div>
       }
