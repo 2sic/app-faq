@@ -6,6 +6,8 @@ import { AccordionOptions } from './lib-2sxc-accordion-options';
   ATM they are:
   - Accordion
   - FAQ
+  - App School System
+  
   The master with the newest / best version must always be the Accordion, the others should then get a fresh copy.
   Because this is shared, all parameters like DOM-IDs etc. must be provided in the Init-call that it can work across apps
 */ 
