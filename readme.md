@@ -19,7 +19,7 @@
 | Best Practices      | ✅    | Uses v12.05 conventions
 | Bootstrap 3         | ✅    | v3 optimized
 | Bootstrap 4         | ✅    | v4 optimized
-| Bootstrap 5         | ✔️    | Works but not optimized
+| Bootstrap 5         | ✅    | v5 optimized
 
 ## Customize the App
 
