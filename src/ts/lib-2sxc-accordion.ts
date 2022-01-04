@@ -7,7 +7,7 @@ import { AccordionOptions } from './lib-2sxc-accordion-options';
   - Accordion
   - FAQ
   - App School System
-  
+
   The master with the newest / best version must always be the Accordion, the others should then get a fresh copy.
   Because this is shared, all parameters like DOM-IDs etc. must be provided in the Init-call that it can work across apps
 */ 
@@ -27,7 +27,7 @@ export function initAccordion({ domId, options } : { domId: string, options: Acc
       const currentElem = event.currentTarget as HTMLElement;
       const hash = currentElem.dataset.accordionParent;
       const parent = currentElem.parentElement;	
-      const targetOpenElem = document.querySelector(`[${options.attrChild}="${hash}"`) as HTMLElement;		
+      const targetOpenElem = document.querySelector(`[${options.attrChild}="${hash}"]`) as HTMLElement;		
 
       // add hash to url
       location.hash = hash;
@@ -41,12 +41,12 @@ export function initAccordion({ domId, options } : { domId: string, options: Acc
   // get hash from url and open specific item
   if(window.location.hash){
     const hash = window.location.hash.replace('#', '');
-    const targetHashElem = document.querySelector(`[${options.attrChild}="${hash}"`);
+    const targetHashElem = document.querySelector(`[${options.attrChild}="${hash}"]`);
     
     // if target element exists scroll to element and open it
     if(targetHashElem){
       const elemOffsetX = targetHashElem.getBoundingClientRect().top + window.scrollY - navHeight;
-      const targetOpenElem = document.querySelector(`[${options.attrChild}="${hash}"`) as HTMLElement;		
+      const targetOpenElem = document.querySelector(`[${options.attrChild}="${hash}"]`) as HTMLElement;		
 
       targetHashElem.parentElement.classList.add(`${options.classIsExpanded}`);
 
