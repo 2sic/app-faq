@@ -35,3 +35,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
     * No more jQuery
     * Renamed AppFolder to contain latest version
     * App has a new GUID for identification allowing side-by-side install with older swiper
+* v04.03.00 2022-04
+    * Moved access to services to ToSic.Sxc.Services

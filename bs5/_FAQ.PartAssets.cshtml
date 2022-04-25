@@ -1,9 +1,10 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
+@using ToSic.Sxc.Services;
 @{
     // 1. Get Services for Css and Page
     var pageCss = GetService<Connect.Koi.ICss>();         // Service to get CSS information about the current Theme
-    var page = GetService<ToSic.Sxc.Web.IPageService>();  // Service to set titles etc. on the page
+    var page = GetService<IPageService>();  // Service to set titles etc. on the page
 
     // Activate font-Awesome 5 from the global resources and activate https://r.2sxc.org/turnon
     page.Activate("FontAwesome5", "turnOn");
