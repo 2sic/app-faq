@@ -1,11 +1,11 @@
-import { show, toggle } from 'slidetoggle';
 import { initAccordion } from './lib-2sxc-accordion';
+import { initAccordionBs5 } from './lib-2sxc-bs5-accordion';
 
 var winAny = window as any;
 winAny.appFaq4 ??= {};
 winAny.appFaq4.init ??= initFaq4;
 winAny.appFaq4.initAccordion ??= initAccordion;
-
+winAny.appFaq4.initAccordionBs5 ??= initAccordionBs5;
 
 function initFaq4({ moduleId } : { moduleId: string }) {
   initFilterButtons(moduleId);
