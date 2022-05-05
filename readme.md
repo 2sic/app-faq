@@ -38,3 +38,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v04.03.00 2022-04
     * Added BS5 accordion component
     * Moved access to services to ToSic.Sxc.Services
+    * Replaced data-enableoptimization with IPageService.AssetAttributes()

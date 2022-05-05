@@ -24,5 +24,5 @@
 }
 <turnOn turn-on='{ "run": "window.appFaq4.init()", "data": { "moduleId": "app-faq4-js-@CmsContext.Module.Id" } }'></turnOn>
 <turnOn turn-on='{ "run": "window.appFaq4.initAccordion()", "data": { "domId": "@DynamicModel.DomId", "options": @jsonOptions }}'></turnOn>
-<script src="@App.Path/bs3/dist/scripts.min.js" data-enableoptimizations="true" ></script>
-<link rel="stylesheet" href="@App.Path/bs3/dist/styles.min.css" data-enableoptimizations="true" />
+<script src="@App.Path/bs3/dist/scripts.min.js" @(page.AssetAttributes())></script>
+<link rel="stylesheet" href="@App.Path/bs3/dist/styles.min.css" @(page.AssetAttributes())/>
