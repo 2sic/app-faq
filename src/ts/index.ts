@@ -24,9 +24,13 @@ function initFilterButtons(moduleId: string): void {
 function displayFilterItems(filter: string, moduleId: string): void {
   // get all filter elements
   document.querySelectorAll(`.${moduleId} [data-filterelem]`)
-      .forEach((filterElem: HTMLElement) => {
-          // display element based on filter match
-          if (filter === 'nofilter' || JSON.parse(filterElem.getAttribute('data-filterelem'))[0] === filter) filterElem.style.display = "block"
-          else filterElem.style.display = "none"
-      });
+    .forEach((filterElem: HTMLElement) => {
+      // display all elements
+      filterElem.style.display = "none";
+
+      // display element based on filter match
+      if(filter === 'nofilter' || JSON.parse(filterElem.getAttribute('data-filterelem')).includes(filter)) {
+        filterElem.style.display = "block"
+      }
+    });
 }

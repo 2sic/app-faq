@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="13.06.00" ExportDate="2022-04-25T15:42:04.2190922+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="13.11.00" ExportDate="2022-05-10T14:33:51.5343868+02:00">
   <Header>
     <App Guid="468b2772-43bb-4008-9ded-396bd5eaab4f" />
     <Language Default="en-us" />
@@ -894,10 +894,10 @@
       <Value Key="RequiredDnnVersion" Value="07.04.02" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredOqtaneVersion" Value="02.02.00" Type="String">
+      <Value Key="RequiredOqtaneVersion" Value="3.1" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="12.05.00" Type="String">
+      <Value Key="RequiredVersion" Value="13.10.00" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
@@ -2890,6 +2890,35 @@
       </Value>
     </Entity>
     <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="529ba3a2-d7d4-4f40-a81b-ff819de03a9e" AttributeSetName="IsDefaultDecorator" EntityGUID="ba58dd00-fc14-4131-8762-5c233303fd53" Json="True" KeyGuid="14f785f2-a337-4ac3-ac42-3d19313b0423" />
+    <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="be34f64b-7d1f-4ad0-b488-dabbbb01a186" AttributeSetName="LightSpeedOutputDecorator" EntityGUID="9af27fc6-5844-465d-a2b9-11368360bfd0" Json="True" KeyNumber="133">
+      <Value Key="Advanced" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="ByUrlParameters" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Duration" Value="14400" Type="Number">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationEditors" Value="300" Type="Number">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationSystemAdmin" Value="300" Type="Number">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationUsers" Value="-1" Type="Number">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="IsEnabled" Value="True" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="✅ - Users 14400s, Reg 🚫, Editors 300s, SysAdmins 300s" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+    </Entity>
   </Entities>
   <PortalFiles />
   <PortalFolders>
