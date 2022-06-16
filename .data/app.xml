@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="13.11.00" ExportDate="2022-05-10T14:33:51.5343868+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.03.00" ExportDate="2022-06-16T15:56:54.7175554+02:00">
   <Header>
     <App Guid="468b2772-43bb-4008-9ded-396bd5eaab4f" />
     <Language Default="en-us" />
@@ -277,6 +277,9 @@
             <Value Key="Disabled" Value="False" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="InputType" Value="string-default" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -289,8 +292,11 @@
             <Value Key="Notes" Value="&lt;p&gt;Serves for a better and faster overview for authors, because you can work with an abstract. This title will never be output. This is helpful because sometimes multiple questions sound the same.&amp;nbsp;&lt;/p&gt;" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
-            <Value Key="Notes" Value="Dient der besseren und schnelleren Übersicht, da mit einem &quot;Abstrakt&quot; gearbeitet werden kann. Dieser Titel wird niemals ausgegeben." Type="String">
+            <Value Key="Notes" Value="&lt;p&gt;Dient der besseren und schnelleren &amp;Uuml;bersicht f&amp;uuml;r Autoren, da man mit einem Abstract arbeiten kann. Dieser Titel wird nie ausgegeben. Dies ist hilfreich, weil manchmal mehrere Fragen gleich klingen.&amp;nbsp;&lt;/p&gt;" Type="String">
               <Dimension DimensionID="153" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="True" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
@@ -311,6 +317,9 @@
             </Value>
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="3a31cfb9-a20e-4a43-812e-c531b7b1f154" Json="True" KeyNumber="4890">
+            <Value Key="InputFontFamily" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="RowCount" Value="1" Type="Number">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -466,6 +475,9 @@
             <Value Key="Disabled" Value="False" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="InputType" Value="entity-content-blocks" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -476,6 +488,12 @@
               <Dimension DimensionID="153" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="&lt;p&gt;This field must always be after the Answer field &quot;Text&quot;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Dieses Feld muss immer nach dem Antwortfeld &quot;Text&quot; stehen.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="153" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
@@ -508,6 +526,9 @@
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="EntityType" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Prefill" Value="" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
           </Entity>
@@ -621,6 +642,9 @@
             <Value Key="Disabled" Value="False" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="InputType" Value="number-default" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -633,8 +657,11 @@
             <Value Key="Notes" Value="&lt;p&gt;The higher the higher in the sorting. If several entries have the same weight/priority, they are sorted alphabetically.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
-            <Value Key="Notes" Value="Je höher desto weiter oben in der Sortierung. Wenn mehrere Einträge dasselbe Gewicht/Priorität haben wird alphabetisch sortiert." Type="String">
+            <Value Key="Notes" Value="&lt;p&gt;Je h&amp;ouml;her desto weiter oben in der Sortierung. Wenn mehrere Eintr&amp;auml;ge dasselbe Gewicht/Priorit&amp;auml;t haben wird alphabetisch sortiert.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="153" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="True" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
@@ -669,20 +696,26 @@
             <Value Key="Disabled" Value="False" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="InputType" Value="boolean-default" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="Name" Value="Initially Expand Answer?" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
-            <Value Key="Name" Value="Initial geöffnet?" Type="String">
+            <Value Key="Name" Value="Initiales öffnen?" Type="String">
               <Dimension DimensionID="153" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="&lt;p&gt;Open this section by default&lt;/p&gt;" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
-            <Value Key="Notes" Value="&lt;p&gt;diesen Abschnitt standardm&amp;auml;ssig &amp;ouml;ffnen&lt;/p&gt;" Type="String">
+            <Value Key="Notes" Value="&lt;p&gt;Diesen Abschnitt standardm&amp;auml;ssig &amp;ouml;ffnen&lt;/p&gt;" Type="String">
               <Dimension DimensionID="153" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
@@ -694,7 +727,17 @@
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
           </Entity>
-          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="c7a17a24-3dd1-4450-9c24-3b76ae8a6e28" Json="True" KeyNumber="4898" />
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="c7a17a24-3dd1-4450-9c24-3b76ae8a6e28" Json="True" KeyNumber="4898">
+            <Value Key="TitleFalse" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="TitleIndeterminate" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="TitleTrue" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+          </Entity>
         </Attribute>
       </Attributes>
     </AttributeSet>
@@ -2798,6 +2841,9 @@
       <Value Key="Description" Value="" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
+      <Value Key="DynamicChildrenField" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
       <Value Key="EditInstructions" Value="" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
@@ -2822,6 +2868,9 @@
     </Entity>
     <Entity TargetType="5" AssignmentObjectType="ContentType" AttributeSetStaticName="ContentType" AttributeSetName="ContentType" EntityGUID="ff27c5ad-6937-4428-93a9-3f4f88be170d" Json="True" KeyString="884e65b4-8f1c-4bc9-897f-147dcabeb941">
       <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="DynamicChildrenField" Value="" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
       <Value Key="EditInstructions" Value="" Type="String">
