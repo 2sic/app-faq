@@ -1,6 +1,5 @@
-@inherits Custom.Hybrid.Razor12
+@inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-@using ToSic.Sxc.Services;
 @{
   // Get some helper commands for later on
   var helpers = CreateInstance("../shared/Helpers.cs");
@@ -8,16 +7,20 @@
   var faqSettings = AsDynamic(Content, Settings);
 
   // Toolbar Configurations for later
-  var mainToolbar = new [] { "+contentitems&pos=2?contentType=Question" };  // add the content-items button
-  var catToolbar = new [] { "toolbar=empty&hover=left", "contentitems?contentType=Category" };
-  var qToolbar = new [] { "-layout", "%new&show=true?contentType=Question&entityId=0" };
-  var render = GetService<IRenderService>();
+  var mainToolbar = Kit.Toolbar.Default()
+    .Data("Question", ui: "pos=2");
+  
+  var catToolbar = Kit.Toolbar.Empty()
+    .Settings(hover: "left")
+    .Data("Category");
+
+  var qToolbar = Kit.Toolbar.Default().Layout("-");
 }
-<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: mainToolbar )>
+<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(Content)>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
     @if (faqSettings.UseCategories && faqSettings.Categories.Count > 1) {
-			<div class="app-faq4-category-wrapper mb-3" @Edit.TagToolbar(toolbar: catToolbar)>
+			<div class="app-faq4-category-wrapper mb-3" @catToolbar>
         <ul class="px-0">
           <li class="btn btn-outline-primary" data-filter="nofilter">
             @Resources.LabelShowAll
@@ -38,10 +41,10 @@
 
         // get the categories for interactive (JavaScript) filtering
         var qCats = AsList(q.Categories as object).Select(x => x.Key);
-        var initiallyExpanded = Convert.ToBool(q.InitiallyExpanded, fallback: false);
+        var initiallyExpanded = Kit.Convert.ToBool(q.InitiallyExpanded, fallback: false);
         var icon = Text.First(q.Icon, "fa-question-circle");     
 
-        <div class="accordion-item" data-filterelem="@Convert.Json.ToJson(qCats)" @Edit.TagToolbar(q, toolbar: qToolbar)>
+        <div class="accordion-item" data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(q)>
           <h2 class="accordion-header" id="headingOne">
             <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" data-bs-toggle="collapse" data-bs-target="#a-@q.EntityId" aria-expanded="true" aria-controls="a-@q.EntityId">
               <span><i class="me-3 co-icon fas @icon" aria-hidden="true"></i></span>
@@ -50,7 +53,7 @@
           </h2>
           <div id="a-@q.EntityId" class='accordion-collapse collapse @(initiallyExpanded ? "show" : "")' aria-labelledby="a-@q.EntityId">
             <div class="accordion-body" data-accordion-child="@q.EntityId">
-              @render.All(q, field: "AnswerInnerContent", merge: q.Answer)
+              @Kit.Render.All(q, field: "AnswerInnerContent", merge: q.Answer)
             </div>
           </div>
         </div>

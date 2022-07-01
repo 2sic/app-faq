@@ -1,6 +1,5 @@
-@inherits Custom.Hybrid.Razor12
+@inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-@using ToSic.Sxc.Services;
 @{
   // Get some helper commands for later on
   var helpers = CreateInstance("../shared/Helpers.cs");
@@ -8,16 +7,21 @@
   var faqSettings = AsDynamic(Content, Settings);
 
   // Toolbar Configurations for later
-  var mainToolbar = new [] { "+contentitems&pos=2?contentType=Question" };  // add the content-items button
-  var catToolbar = new [] { "toolbar=empty&hover=left", "contentitems?contentType=Category" };
-  var qToolbar = new [] { "-layout", "%new&show=true?contentType=Question&entityId=0" };
-  var render = GetService<IRenderService>();
+  var mainToolbar = Kit.Toolbar.Default()
+    .Data("Question", ui: "pos=2")
+    .Settings(classes:"test-classes");
+  
+  var catToolbar = Kit.Toolbar.Empty()
+    .Settings(hover: "left")
+    .Data("Category");
+
+  var qToolbar = Kit.Toolbar.Default().Layout("-");
 }
-<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @Edit.TagToolbar(Content, toolbar: mainToolbar )>
+<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(Content)>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
     @if (faqSettings.UseCategories && faqSettings.Categories.Count > 1) {
-			<div class="app-faq4-category-wrapper" @Edit.TagToolbar(toolbar: catToolbar)>
+			<div class="app-faq4-category-wrapper" @catToolbar>
         <ul>
           <li class="btn btn-outline-primary" data-filter="nofilter">
             @Resources.LabelShowAll
@@ -36,10 +40,10 @@
       @foreach (var q in helpers.GetQuestionsSorted()) {
         // get the categories for interactive (JavaScript) filtering
         var qCats = AsList(q.Categories as object).Select(x => x.Key);
-        var initiallyExpanded = Convert.ToBool(q.InitiallyExpanded, fallback: false);
+        var initiallyExpanded = Kit.Convert.ToBool(q.InitiallyExpanded, fallback: false);
         var icon = Text.First(q.Icon, "fa-question-circle");                  // icon? default ...-circle
 
-        <div class='app-faq4-item @(initiallyExpanded ? "is-expanded" : "")' data-filterelem="@Convert.Json.ToJson(qCats)" @Edit.TagToolbar(q, toolbar: qToolbar)>
+        <div class='app-faq4-item @(initiallyExpanded ? "is-expanded" : "")' data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(q)>
           @* title bar with expansion icon *@
           <div @helpers.AdminHelperLabel(q) class="app-faq4-title" data-accordion-parent="@q.EntityId">
             <h2>
@@ -54,7 +58,7 @@
 
           @* Show the answer; compact or expanded *@
           <div class='app-faq4-content @(initiallyExpanded ? "is-expanded" : "")' data-accordion-child="@q.EntityId">
-            @render.All(q, field: "AnswerInnerContent", merge: q.Answer)
+            @Kit.Render.All(q, field: "AnswerInnerContent", merge: q.Answer)
           </div>
         </div>
       }

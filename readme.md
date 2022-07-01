@@ -39,3 +39,8 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
     * Added BS5 accordion component
     * Moved access to services to ToSic.Sxc.Services
     * Replaced data-enableoptimization with IPageService.AssetAttributes()
+* v04.03.00 2022-06
+    * Changed all base classes to their 2sxc 14 equivalents
+    * Removed all GetService<> and replaced it with ServiceKit14
+    * Updated Webpack
+    * Changed all toolbars to use the IToolbarService
