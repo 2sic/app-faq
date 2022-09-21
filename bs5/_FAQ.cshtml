@@ -33,9 +33,13 @@
         </ul>
       </div>
     }
+    
+    @* Add some space for toolbar if no categories shown *@
+    @if(Edit.Enabled && !faqSettings.UseCategories){
+      <div class="py-4"></div>
+    }
 
     @* List the questions *@
-
     <div class="app-faq4-question-wrapper accordion accordion-flush" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
        @foreach (var q in helpers.GetQuestionsSorted()) {
 
@@ -45,7 +49,7 @@
         var icon = Text.First(q.Icon, "fa-question-circle");     
 
         <div class="accordion-item" data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(q)>
-          <h2 class="accordion-header" id="headingOne">
+          <h2 class="accordion-header" id="a-@CmsContext.Module.Id-@q.EntityId">
             <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" data-bs-toggle="collapse" data-bs-target="#a-@q.EntityId" aria-expanded="true" aria-controls="a-@q.EntityId">
               <span><i class="me-3 co-icon fas @icon" aria-hidden="true"></i></span>
               @Tags.Nl2Br(q.Question)

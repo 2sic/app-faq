@@ -36,6 +36,11 @@
       </div>
     }
 
+    @* Add some space for toolbar if no categories shown *@
+    @if(Edit.Enabled && !faqSettings.UseCategories){
+      <div style="padding: 1.5rem 0"></div>
+    }
+
     @* List the questions *@
     <div>
 			<div class="app-faq4-question-wrapper">

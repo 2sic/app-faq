@@ -35,6 +35,11 @@
       </div>
     }
 
+    @* Add some space for toolbar if no categories shown *@
+    @if(Edit.Enabled && !faqSettings.UseCategories){
+      <div class="py-4"></div>
+    }
+
     @* List the questions *@
     <div class="app-faq4-question-wrapper">
       @foreach (var q in helpers.GetQuestionsSorted()) {
