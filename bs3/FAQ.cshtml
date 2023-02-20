@@ -21,11 +21,11 @@
 <div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(Content)>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
-    @if(App.Settings.UseCategories && Content.Categories.Count > 1) {
+    @if (faqSettings.Get("UseCategories") && faqSettings.Get("Categories").Count > 1) {
 			<div class="app-faq4-category-wrapper" @catToolbar>
         <ul>
           <li class="btn btn-primary" data-filter="nofilter">
-            @App.Resources.LabelShowAll
+            @Resources.Get("LabelShowAll")
           </li>
           @foreach (var c in Content.Categories) {
             <li class="btn btn-primary" data-filter="@c.Key">
@@ -37,7 +37,7 @@
     }
 
     @* Add some space for toolbar if no categories shown *@
-    @if(Edit.Enabled && !faqSettings.UseCategories){
+    @if(Edit.Enabled && !faqSettings.Get("UseCategories")){
       <div style="padding: 1.5rem 0"></div>
     }
 
