@@ -1,0 +1,35 @@
+@inherits Custom.Hybrid.Razor14
+@using ToSic.Razor.Blade;
+@{
+  // Activate font-Awesome 5 from the global resources and activate https://r.2sxc.org/turnon
+  Kit.Page.Activate("FontAwesome5");
+
+  // 2. Include Bootstrap5 if the framework isn't known
+  if (Kit.Css.IsUnknown) {
+      Kit.Page.Activate("Bootstrap5");
+  }
+
+  var data = new {
+    moduleId = "app-faq4-js-" + CmsContext.Module.Id
+  };
+
+  var accordionOptions = new {
+    tagStickyHeader = "header",           // This is the sticky header in the page, the height of which must be respected on scroll
+    classIsExpanded = "show",             // This marks open accordions
+    classInactive = "collapsed",          // This marks inactive accordions
+    attrParent = "data-bs-target",        // This attribute marks the title tag which will trigger expand/collapse, the value must be same as in the child
+    attrChild = "data-accordion-child",   // This attribute contains a key which is used in the #-fragment for navigating to a section
+  };  
+
+  var accordionData = new {
+    domId = DynamicModel.DomId,
+    options = accordionOptions
+  };
+}
+
+@Kit.Page.TurnOn("window.appFaq4.init()", data: data)
+@Kit.Page.TurnOn("window.appFaq4.initAccordionBs5()", data: accordionData)
+<script src="@App.Path/bs5/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
+<link rel="stylesheet" href="@App.Path/bs5/dist/styles.min.css" @Kit.Page.AssetAttributes()/>
+
+
