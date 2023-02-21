@@ -22,7 +22,9 @@ var accordionData = new {
 @* Activate font-Awesome 5 from the global resources and activate https://r.2sxc.org/turnon *@
 @Kit.Page.Activate("FontAwesome5")
 
+@* When the page is ready, run appFaq4 init JS *@
 @Kit.Page.TurnOn("window.appFaq4.init()", data: data)
+@* When the page is ready, run initAccordion init JS *@
 @Kit.Page.TurnOn("window.appFaq4.initAccordion()", data: accordionData)
 
 <script src="@App.Path/bs4/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
