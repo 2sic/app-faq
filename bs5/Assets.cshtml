@@ -1,11 +1,6 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
 @{
-  // Activate font-Awesome 5 from the global resources and activate https://r.2sxc.org/turnon
-  Kit.Page.Activate("FontAwesome5");
-
-@* Include bootstrap 5 if the framework isn't known - then this file is still called, and we add Bootstrap to the page *@
-@Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
 
   var data = new {
     moduleId = "app-faq4-js-" + CmsContext.Module.Id
@@ -24,6 +19,12 @@
     options = accordionOptions
   };
 }
+
+@* Include bootstrap 5 if the framework isn't known - then this file is still called, and we add Bootstrap to the page *@
+@Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
+
+@* Activate font-Awesome 5 from the global resources and activate https://r.2sxc.org/turnon *@
+@Kit.Page.Activate("FontAwesome5")
 
 @Kit.Page.TurnOn("window.appFaq4.init()", data: data)
 @Kit.Page.TurnOn("window.appFaq4.initAccordionBs5()", data: accordionData)

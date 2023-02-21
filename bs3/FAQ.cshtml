@@ -3,14 +3,13 @@
 @{
   // Get some helper commands for later on
   var helpers = CreateInstance("../shared/Helpers.cs");
-  // Merge the settings on Content with the predefined Settings
-  var faqSettings = AsDynamic(Content, Settings);
   
   // Toolbar Configurations for later
   var mainToolbar = Kit.Toolbar.Default()
     .Data("Question", ui: "pos=2")
     .Settings(classes:"test-classes");
-  
+
+   // Toolbar to manage categories
   var catToolbar = Kit.Toolbar.Empty()
     .Settings(hover: "left")
     .Data("Category");
@@ -21,7 +20,7 @@
 <div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(Content)>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
-    @if (faqSettings.Get("UseCategories") && faqSettings.Get("Categories").Count > 1) {
+    @if (Settings.UseCategories && Content.Categories.Count > 1) {
 			<div class="app-faq4-category-wrapper" @catToolbar>
         <ul>
           <li class="btn btn-primary" data-filter="nofilter">
@@ -37,14 +36,14 @@
     }
 
     @* Add some space for toolbar if no categories shown *@
-    @if(Edit.Enabled && !faqSettings.Get("UseCategories")){
+    @if(Edit.Enabled && !Settings.UseCategories){
       <div style="padding: 1.5rem 0"></div>
     }
 
     @* List the questions *@
     <div>
 			<div class="app-faq4-question-wrapper">
-			@foreach (var q in helpers.GetQuestionsSorted()) {
+			@foreach (var q in AsList(Data["Questions"])) {
 				// get the categories for interactive (JavaScript) filtering
 				var qCats = AsList(q.Categories as object).Select(x => x.Key);
 				// should this be expanded initially? default is false
@@ -76,4 +75,4 @@
 	</div>
 </div>
 
-@Html.Partial("./FAQ.PartAssets.cshtml")
+@Html.Partial("./Assets.cshtml")
