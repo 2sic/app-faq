@@ -7,7 +7,7 @@
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Requires 2sxc v13.10
+| 2sxc                | ✅    | Requires 2sxc v15.03
 | Dnn                 | ✅    | For v7, v8 and v9
 | Oqtane 2            | ✅    | Requires v2.02
 | No jQuery           | ✅    | Since v4
@@ -29,18 +29,22 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 
 ## History
 
-* v4 2021-09
+* v.4 2021-09
     * Now Hybrid, works in Dnn and Oqtane
     * Updated to latest 12.05 standards
     * No more jQuery
     * Renamed AppFolder to contain latest version
     * App has a new GUID for identification allowing side-by-side install with older swiper
-* v04.02.00 2022-04
+* v.04.02.00 2022-04
     * Added BS5 accordion component
     * Moved access to services to ToSic.Sxc.Services
     * Replaced data-enableoptimization with IPageService.AssetAttributes()
-* v04.03.00 2022-06
+* v.04.03.00 2022-06
     * Changed all base classes to their 2sxc 14 equivalents
     * Removed all GetService<> and replaced it with ServiceKit14
     * Updated Webpack
     * Changed all toolbars to use the IToolbarService
+* v.04.04.00 2023-02
+    * Replaced Tag.Custom with `Kit.HtmlTags`
+    * Replaced turnOn Tag with `Kit.Page.TurnOn`
+    * Removed _ from Filenames
