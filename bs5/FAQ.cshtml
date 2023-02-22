@@ -1,5 +1,6 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
+@* --- This is the Bootstrap5 Edition of the Files --- *@
 @{
   // Get some helper commands for later on
   var helpers = CreateInstance("../shared/Helpers.cs");
@@ -15,6 +16,9 @@
 
   // Toolbar without Layout Button
   var qToolbar = Kit.Toolbar.Default().Layout("-");
+  
+  // query whether BS5 or BS4 for Class
+  var isBs5 = Kit.Css.Is("bs5");
 }
 
 <div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(Content)>
@@ -49,10 +53,15 @@
         var initiallyExpanded = Kit.Convert.ToBool(q.InitiallyExpanded, fallback: false);
         var icon = Text.First(q.Icon, "fa-question-circle");     
 
+        // Class for BS5 or BS4 
+        var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
+        var bsTargetAttr = isBs5 ? "data-bs-target" : "data-target";
+        var marginRight = isBs5 ? "me-3" : "mr-3";
+
         <div class="accordion-item" data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(q)>
           <h2 class="accordion-header" id="a-@CmsContext.Module.Id-@q.EntityId">
-            <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" data-bs-toggle="collapse" data-bs-target="#a-@q.EntityId" aria-expanded="true" aria-controls="a-@q.EntityId">
-              <span><i class="me-3 co-icon fas @icon" aria-hidden="true"></i></span>
+            <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" @bsToggleAttr="collapse" @bsTargetAttr="#a-@q.EntityId" aria-expanded="true" aria-controls="a-@q.EntityId">
+              <span><i class="@marginRight co-icon fas @icon" aria-hidden="true"></i></span>
               @Tags.Nl2Br(q.Question)
             </button>
           </h2>

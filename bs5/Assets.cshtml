@@ -1,16 +1,20 @@
 @inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
+@* --- This is the Bootstrap5 Edition of the Files --- *@
 @{
-
   var data = new {
     moduleId = "app-faq4-js-" + CmsContext.Module.Id
   };
+
+  // Class for BS5 or BS4 
+  var isBs5 = Kit.Css.Is("bs5");
+  var bsTargetAttr = isBs5 ? "data-bs-target" : "data-target";
 
   var accordionOptions = new {
     tagStickyHeader = "header",           // This is the sticky header in the page, the height of which must be respected on scroll
     classIsExpanded = "show",             // This marks open accordions
     classInactive = "collapsed",          // This marks inactive accordions
-    attrParent = "data-bs-target",        // This attribute marks the title tag which will trigger expand/collapse, the value must be same as in the child
+    attrParent = bsTargetAttr,        // This attribute marks the title tag which will trigger expand/collapse, the value must be same as in the child
     attrChild = "data-accordion-child",   // This attribute contains a key which is used in the #-fragment for navigating to a section
   };  
 
@@ -31,5 +35,6 @@
 @* When the page is ready, run initAccordion init JS *@
 @Kit.Page.TurnOn("window.appFaq4.initAccordionBs5()", data: accordionData)
 
-<script src="@App.Path/bs5/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
-<link rel="stylesheet" href="@App.Path/bs5/dist/styles.min.css" @Kit.Page.AssetAttributes()/>
+@* Load the JavaScripts/Styles from the App folder. Each edition (bs5, bs3, etc.) has different files *@
+<link rel="stylesheet" href="@CmsContext.View.Path/dist/styles.min.css" @Kit.Page.AssetAttributes()>
+<script type="text/javascript" src="@CmsContext.View.Path/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>

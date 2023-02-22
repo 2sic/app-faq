@@ -25,6 +25,11 @@
 @import "_variables.scss";
 @import "../../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
 @import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/_accordion.scss";
+@import "../../node_modules/bootstrap/scss/_dropdown.scss";
+@import "../../node_modules/bootstrap/scss/_transitions.scss";
+
 
 
 // Now parse the Faq4 CSS Rules
