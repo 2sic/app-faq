@@ -28,7 +28,7 @@
 			<div class="app-faq4-category-wrapper mb-3" @catToolbar>
         <ul class="px-0">
           <li class="btn btn-outline-primary" data-filter="nofilter">
-            @Resources.Get("LabelShowAll")
+            @Resources.LabelShowAll
           </li>
           @foreach (var c in Content.Categories) {
             <li class="btn btn-outline-primary" data-filter="@c.Key">
@@ -40,7 +40,7 @@
     }
     
     @* Add some space for toolbar if no categories shown *@
-    @if(Edit.Enabled && !Settings.UseCategories){
+    @if (Edit.Enabled && !Settings.UseCategories) {
       <div class="py-4"></div>
     }
 
