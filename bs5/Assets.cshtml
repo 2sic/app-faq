@@ -2,38 +2,44 @@
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the Files --- *@
 @{
-  var data = new {
+  var faqJsData = new {
     moduleId = "app-faq4-js-" + CmsContext.Module.Id
   };
 
-  // Class for BS5 or BS4 
   var isBs5 = Kit.Css.Is("bs5");
-  var bsTargetAttr = isBs5 ? "data-bs-target" : "data-target";
-
-  var accordionOptions = new {
-    tagStickyHeader = "header",           // This is the sticky header in the page, the height of which must be respected on scroll
-    classIsExpanded = "show",             // This marks open accordions
-    classInactive = "collapsed",          // This marks inactive accordions
-    attrParent = bsTargetAttr,        // This attribute marks the title tag which will trigger expand/collapse, the value must be same as in the child
-    attrChild = "data-accordion-child",   // This attribute contains a key which is used in the #-fragment for navigating to a section
-  };  
-
+  var isBs4 = Kit.Css.Is("bs4");
+  var isBs3 = Kit.Css.Is("bs3");
+  
   var accordionData = new {
     domId = DynamicModel.DomId,
-    options = accordionOptions
+    options =  new {
+    tagStickyHeader = "header",           // This is the sticky header in the page, the height of which must be respected on scroll
+    classIsExpanded =  isBs3 ? "is-expanded" : "show" , // This marks open accordions
+    classInactive = "collapsed",          // This marks inactive accordions
+    attrChild = "data-accordion-child",   // This attribute contains a key which is used in the #-fragment for navigating to a section
+    attrParent = isBs5 ? "data-bs-target" // This attribute marks the title tag which will trigger expand/collapse, the value must be same as in the child
+      : isBs4 ? "data-target" 
+      : "data-accordion-parent",        
+  }
   };
 }
 
-@* Include bootstrap 5 if the framework isn't known - then this file is still called, and we add Bootstrap to the page *@
+@* Include bootstrap 5 if the CSS framework of the skin isn't known *@
 @Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
 
 @* Activate font-Awesome 5 from the global resources and activate https://r.2sxc.org/turnon *@
 @Kit.Page.Activate("FontAwesome5")
 
 @* When the page is ready, run appFaq4 init JS *@
-@Kit.Page.TurnOn("window.appFaq4.init()", data: data)
+@Kit.Page.TurnOn("window.appFaq4.init()", data: faqJsData)
+
 @* When the page is ready, run initAccordion init JS *@
-@Kit.Page.TurnOn("window.appFaq4.initAccordionBs5()", data: accordionData)
+
+@if(isBs3) {
+  @Kit.Page.TurnOn("window.appFaq4.initAccordion()", data: accordionData)
+} else {
+  @Kit.Page.TurnOn("window.appFaq4.initAccordionBs5()", data: accordionData)
+}
 
 @* Load the JavaScripts/Styles from the App folder. Each edition (bs5, bs3, etc.) has different files *@
 <link rel="stylesheet" href="@CmsContext.View.Path/dist/styles.min.css" @Kit.Page.AssetAttributes()>
