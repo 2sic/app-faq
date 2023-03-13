@@ -1,4 +1,3 @@
-
 .app-faq4-wrapper {
   .accordion-header {
     margin-bottom: 0;
@@ -6,6 +5,11 @@
 
   .accordion-body {
     padding: 1rem 1.25rem;
+  }
+
+  .accordion-item {
+    background-color: #fff;
+    border-bottom: 1px solid rgba($secondary, 0.3) !important;
   }
 
   .accordion-button {
@@ -19,7 +23,6 @@
     text-align: left;
     background-color: #fff;
     border: 0 !important;
-    border-bottom: 1px solid rgba($secondary, 0.3) !important;
     overflow-anchor: none;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
       box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
@@ -47,7 +50,7 @@
       transition: transform 0.2s ease-in-out;
     }
 
-    &:focus{
+    &:focus {
       outline: none;
     }
   }
