@@ -2,6 +2,10 @@
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the Files --- *@
 @{
+  // The main configuration is the content of the current module
+  var config = AsTyped(Data.MyContent);
+  var categories = config.Children("Categories");
+
   // Get some helper commands for later on
   var helpers = CreateInstance("../shared/Helpers.cs");
 
@@ -21,18 +25,18 @@
   var isBs5 = Kit.Css.Is("bs5");
 }
 
-<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(Content)>
+<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(config)>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
-    @if (Settings.UseCategories && Content.Categories.Count > 1) {
+    @if (Settings.UseCategories && categories.Count() > 1) {
 			<div class="app-faq4-category-wrapper mb-3" @catToolbar>
         <ul class="px-0">
           <li class="btn btn-outline-primary" data-filter="nofilter">
             @Resources.LabelShowAll
           </li>
-          @foreach (var c in Content.Categories) {
-            <li class="btn btn-outline-primary" data-filter="@c.Key">
-              @c.Name
+          @foreach (var c in categories) {
+            <li class="btn btn-outline-primary" data-filter='@c.String("Key")'>
+              @c.String("Name")
             </li>
           }
         </ul>
@@ -46,12 +50,12 @@
 
     @* List the questions *@
     <div class="app-faq4-question-wrapper accordion accordion-flush" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
-       @foreach (var q in AsList(Data["Questions"])) {
+       @foreach (var q in AsTypedList(Data["Questions"])) {
 
         // get the categories for interactive (JavaScript) filtering
-        var qCats = AsList(q.Categories as object).Select(x => x.Key);
-        var initiallyExpanded = Kit.Convert.ToBool(q.InitiallyExpanded, fallback: false);
-        var icon = Text.First(q.Icon, "fa-question-circle");     
+        var qCats = q.Children("Categories").Select(x => x.String("Key"));
+        var initiallyExpanded = q.Bool("InitiallyExpanded");
+        var icon = Text.First(q.String("Icon"), "fa-question-circle");     
 
         // Class for BS5 or BS4 
         var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
@@ -62,12 +66,12 @@
           <h2 class="accordion-header" id="a-@CmsContext.Module.Id-@q.EntityId">
             <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" @bsToggleAttr="collapse" @bsTargetAttr="#a-@q.EntityId" aria-expanded="true" aria-controls="a-@q.EntityId">
               <span><i class="@marginRight co-icon fas @icon" aria-hidden="true"></i></span>
-              @Tags.Nl2Br(q.Question)
+              @Tags.Nl2Br(q.String("Question"))
             </button>
           </h2>
           <div id="a-@q.EntityId" class='accordion-collapse collapse @(initiallyExpanded ? "show" : "")' aria-labelledby="a-@q.EntityId">
             <div class="accordion-body" data-accordion-child="@q.EntityId">
-              @Kit.Render.All(q, field: "AnswerInnerContent", merge: q.Answer)
+              @q.Html("Answer")
             </div>
           </div>
         </div>
