@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.00.00" ExportDate="2023-05-03T11:22:17.9486743+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.01.01" ExportDate="2023-05-31T16:14:03.7747511+02:00">
   <Header>
     <App Guid="468b2772-43bb-4008-9ded-396bd5eaab4f" />
     <Language Default="en-us" />
@@ -69,6 +69,15 @@
             <Value Key="Disabled" Value="False" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="HelpLink" Value="" Type="Hyperlink">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Information" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="InputType" Value="boolean-default" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -78,13 +87,19 @@
             <Value Key="Name" Value="Werden Kategorien verwendet?" Type="String">
               <Dimension DimensionID="153" ReadOnly="false" />
             </Value>
-            <Value Key="Notes" Value="&lt;p&gt;Advanced or not advanced, that's the question here.&lt;/p&gt;" Type="String">
+            <Value Key="Notes" Value="&lt;p&gt;Use categories (or not) in each question. If disabled, will not offer categories-options.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="&lt;p&gt;Advanced oder nicht advanced, das ist hier die Frage.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="153" ReadOnly="false" />
             </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Tooltip" Value="" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
@@ -94,7 +109,17 @@
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
           </Entity>
-          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="258d13fa-1000-44c2-a43e-0fa0b707682e" Json="True" KeyNumber="4885" />
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="258d13fa-1000-44c2-a43e-0fa0b707682e" Json="True" KeyNumber="4885">
+            <Value Key="TitleFalse" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="TitleIndeterminate" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="TitleTrue" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+          </Entity>
         </Attribute>
       </Attributes>
     </AttributeSet>
@@ -1088,13 +1113,13 @@
       <Value Key="OriginalId" Value="" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredDnnVersion" Value="07.04.02" Type="String">
+      <Value Key="RequiredDnnVersion" Value="09.06.01" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredOqtaneVersion" Value="3.1" Type="String">
+      <Value Key="RequiredOqtaneVersion" Value="03.04.00" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="16.00.00" Type="String">
+      <Value Key="RequiredVersion" Value="16.02.00" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
@@ -3086,10 +3111,10 @@
       <Value Key="DurationUsers" Value="-1" Type="Number">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="IsEnabled" Value="False" Type="Boolean">
+      <Value Key="IsEnabled" Value="True" Type="Boolean">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="Title" Value="🚫" Type="String">
+      <Value Key="Title" Value="✅ - Users 14400s, Reg 🚫, Editors 300s, SysAdmins 300s" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
       <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">

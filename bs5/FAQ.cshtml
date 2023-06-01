@@ -1,4 +1,5 @@
 @inherits Custom.Hybrid.Razor14
+@using System.Linq;
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the Files --- *@
 @{
@@ -11,7 +12,7 @@
 
   // Toolbar Configurations for later
   var mainToolbar = Kit.Toolbar.Default()
-    .Data("Question", ui: "pos=2");
+    .Data("Question", tweak: b => b.Position(2));
   
   // Toolbar to manage categories
   var catToolbar = Kit.Toolbar.Empty()

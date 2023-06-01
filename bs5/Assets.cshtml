@@ -35,7 +35,7 @@
 
 @* When the page is ready, run initAccordion init JS *@
 
-@if(isBs3) {
+@if (isBs3) {
   @Kit.Page.TurnOn("window.appFaq4.initAccordion()", data: accordionData)
 } else {
   @Kit.Page.TurnOn("window.appFaq4.initAccordionBs5()", data: accordionData)

@@ -1,15 +1,18 @@
 @inherits Custom.Hybrid.Razor14
+@using System.Linq;
 @using ToSic.Razor.Blade;
 @* It is a separate file and not from BS5 Folder, because accordion comes from another library, because there is no such thing in bs3  *@
 @{
-  // TODO: @2dg - repeat work done on BS5 using AsTyped etc.
+  // The main configuration is the content of the current module
+  var config = AsTyped(Data.MyContent);
+  var categories = config.Children("Categories");
+
   // Get some helper commands for later on
   var helpers = CreateInstance("../shared/Helpers.cs");
   
   // Toolbar Configurations for later
   var mainToolbar = Kit.Toolbar.Default()
-    .Data("Question", ui: "pos=2")
-    .Settings(classes:"test-classes");
+    .Data("Question", tweak: b => b.Position(2));
 
    // Toolbar to manage categories
   var catToolbar = Kit.Toolbar.Empty()
@@ -20,18 +23,18 @@
   var qToolbar = Kit.Toolbar.Default().Layout("-");
 }
 
-<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(Content)>
+<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(config)>
 	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
-    @if (Settings.UseCategories && Content.Categories.Count > 1) {
+    @if (Settings.UseCategories && categories.Count() > 1) {
 			<div class="app-faq4-category-wrapper" @catToolbar>
         <ul>
           <li class="btn btn-primary" data-filter="nofilter">
             @Resources.LabelShowAll
           </li>
-          @foreach (var c in Content.Categories) {
-            <li class="btn btn-primary" data-filter="@c.Key">
-              @c.Name
+          @foreach (var c in categories) {
+            <li class="btn btn-primary" data-filter="@c.String("Key")">
+              @c.String("Name")
             </li>
           }
         </ul>
@@ -46,20 +49,20 @@
     @* List the questions *@
     <div>
 			<div class="app-faq4-question-wrapper">
-			@foreach (var q in AsList(Data["Questions"])) {
+			@foreach (var q in AsTypedList(Data["Questions"])) {
 				// get the categories for interactive (JavaScript) filtering
-				var qCats = AsList(q.Categories as object).Select(x => x.Key);
+				var qCats = q.Children("Categories").Select(x => x.String("Key"));
 				// should this be expanded initially? default is false
-				var initiallyExpanded = q.InitiallyExpanded ?? false;
+				var initiallyExpanded = q.Bool("InitiallyExpanded");
 				// use the icon or default to question-circle
-				var icon = Text.First(q.Icon, "fa-question-circle");
+				var icon = Text.First(q.String("Icon"), "fa-question-circle");
 
 				<div class='app-faq4-item @(initiallyExpanded ? "is-expanded" : "")' data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(q)>
 						@* title bar with expansion icon *@
 						<div id="hash-@q.EntityId" class='app-faq4-title' data-accordion-parent="@q.EntityId">
 							<h2 @Edit.Attribute("title", helpers.AdminHelperLabel(q))>
 								<span><i class="fas @icon" aria-hidden="true"></i></span>
-								@Tags.Nl2Br(q.Question)
+								@Tags.Nl2Br(q.String("Question"))
 							</h2>
 
               @* Up / Down arrows as SVG - hidden by default, become visible based on CSS *@
@@ -69,7 +72,7 @@
 
 						@* Show the answer; compact or expanded *@
 						<div class='app-faq4-content @(initiallyExpanded ? "is-expanded" : "")' data-accordion-child="@q.EntityId">
-							@Kit.Render.All(q, field: "DesignedContent", merge: q.Answer)
+							@q.Html("Answer")
 						</div>
 				</div>
 			}

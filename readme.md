@@ -4,19 +4,18 @@
 
 > This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
-
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Requires 2sxc v15.04
-| Dnn                 | ✅    | For v7, v8 and v9
-| Oqtane 2            | ✅    | Requires v2.02
+| 2sxc                | ✅    | Requires 2sxc v16.01
+| Dnn                 | ✅    | For v9.6.1
+| Oqtane 2            | ✅    | Requires v3.04
 | No jQuery           | ✅    | Since v4
-| Live Demo           | ➖    | 
+| Live Demo           | ➖    |
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/_fpa_ZHf) on [azing.org](https://azing.org/2sxc)
 | Source & License    | ✅    | included, MIT
 | App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/faq4-hybrid-for-dnn-and-oqtane)
 | Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/faq4-hybrid-for-dnn-and-oqtane)
-| Best Practices      | ✅    | Uses v13.10 conventions
+| Best Practices      | ✅    | Uses v16.01 conventions
 | Bootstrap 3         | ✅    | v3 optimized
 | Bootstrap 4         | ✅    | v4 optimized
 | Bootstrap 5         | ✅    | v5 optimized
@@ -30,23 +29,22 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 ## History
 
 * v.4 2021-09
-    * Now Hybrid, works in Dnn and Oqtane
-    * Updated to latest 12.05 standards
-    * No more jQuery
-    * Renamed AppFolder to contain latest version
-    * App has a new GUID for identification allowing side-by-side install with older swiper
+  * Now Hybrid, works in Dnn and Oqtane
+  * Updated to latest 12.05 standards
+  * No more jQuery
+  * Renamed AppFolder to contain latest version
+  * App has a new GUID for identification allowing side-by-side install with older swiper
 * v.04.02.00 2022-04
-    * Added BS5 accordion component
-    * Moved access to services to ToSic.Sxc.Services
-    * Replaced data-enableoptimization with IPageService.AssetAttributes()
+  * Added BS5 accordion component
+  * Moved access to services to ToSic.Sxc.Services
+  * Replaced data-enableoptimization with IPageService.AssetAttributes()
 * v.04.03.00 2022-06
-    * Changed all base classes to their 2sxc 14 equivalents
-    * Removed all GetService<> and replaced it with ServiceKit14
+  * Changed all base classes to their 2sxc 14 equivalents
+  * Removed all GetService<> and replaced it with ServiceKit14
     * Updated Webpack
     * Changed all toolbars to use the IToolbarService
 * v.04.04.00 2023-02
-    * Replaced Tag.Custom with `Kit.HtmlTags`
-    * Replaced turnOn Tag with `Kit.Page.TurnOn`
-    * Removed _ from Filenames
-    * Code in one file the bs5, less duplicated code
-
+  * Replaced Tag.Custom with `Kit.HtmlTags`
+  * Replaced turnOn Tag with `Kit.Page.TurnOn`
+  * Removed _ from Filenames
+  * Code in one file the bs5, less duplicated code
