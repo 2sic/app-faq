@@ -1,14 +1,14 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorPro
 @using System.Linq;
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the Files --- *@
 @{
-  // The main configuration is the content of the current module
-  var config = AsTyped(Data.MyContent);
+  // The main configuration comprises the substance of the current module.
+  var config = MyItem;
   var categories = config.Children("Categories");
 
   // Get some helper commands for later on
-  var helpers = CreateInstance("../shared/Helpers.cs");
+  var helpers = GetCode("../shared/Helpers.cs");
 
   // Toolbar Configurations for later
   var mainToolbar = Kit.Toolbar.Default()
@@ -26,14 +26,14 @@
   var isBs5 = Kit.Css.Is("bs5");
 }
 
-<div class="app-faq4-js-@CmsContext.Module.Id position-relative" @mainToolbar.For(config)>
-	<div class="app-faq4-wrapper" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
+<div class="app-faq4-js-@MyContext.Module.Id position-relative" @mainToolbar.For(config)>
+	<div class="app-faq4-wrapper" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
     @* Display the categories *@
-    @if (Settings.UseCategories && categories.Count() > 1) {
+    @if (App.Settings.Bool("UseCategories") && categories.Count() > 1) {
 			<div class="app-faq4-category-wrapper mb-3" @catToolbar>
         <ul class="px-0">
           <li class="btn btn-outline-primary" data-filter="nofilter">
-            @Resources.LabelShowAll
+            @App.Resources.String("LabelShowAll")
           </li>
           @foreach (var c in categories) {
             <li class="btn btn-outline-primary" data-filter='@c.String("Key")'>
@@ -45,13 +45,12 @@
     }
     
     @* Add some space for toolbar if no categories shown *@
-    @if (Edit.Enabled && !Settings.UseCategories) {
+    @if (MyUser.IsContentAdmin && !App.Settings.Bool("UseCategories")) {
       <div class="py-4"></div>
     }
-
     @* List the questions *@
-    <div class="app-faq4-question-wrapper accordion accordion-flush" @Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
-       @foreach (var q in AsTypedList(Data["Questions"])) {
+    <div class="app-faq4-question-wrapper accordion accordion-flush" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
+       @foreach (var q in AsItems(MyData["Questions"])) {
 
         // get the categories for interactive (JavaScript) filtering
         var qCats = q.Children("Categories").Select(x => x.String("Key"));
@@ -64,14 +63,14 @@
         var marginRight = isBs5 ? "me-3" : "mr-3";
 
         <div class="accordion-item" data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(q)>
-          <h2 class="accordion-header" id="a-@CmsContext.Module.Id-@q.EntityId">
-            <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" @bsToggleAttr="collapse" @bsTargetAttr="#a-@q.EntityId" aria-expanded="true" aria-controls="a-@q.EntityId">
+          <h2 class="accordion-header" id="a-@MyContext.Module.Id-@q.Id">
+            <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" @bsToggleAttr="collapse" @bsTargetAttr="#a-@q.Id" aria-expanded="true" aria-controls="a-@q.Id">
               <span><i class="@marginRight co-icon fas @icon" aria-hidden="true"></i></span>
               @Tags.Nl2Br(q.String("Question"))
             </button>
           </h2>
-          <div id="a-@q.EntityId" class='accordion-collapse collapse @(initiallyExpanded ? "show" : "")' aria-labelledby="a-@q.EntityId">
-            <div class="accordion-body" data-accordion-child="@q.EntityId">
+          <div id="a-@q.Id" class='accordion-collapse collapse @(initiallyExpanded ? "show" : "")' aria-labelledby="a-@q.Id">
+            <div class="accordion-body" data-accordion-child="@q.Id">
               @q.Html("Answer")
             </div>
           </div>

@@ -1,26 +1,23 @@
-@inherits Custom.Hybrid.Razor14
+@inherits Custom.Hybrid.RazorPro
 @using ToSic.Razor.Blade;
 @* --- This is the Bootstrap5 Edition of the Files --- *@
 @{
-  var faqJsData = new {
-    moduleId = "app-faq4-js-" + CmsContext.Module.Id
-  };
-
   var isBs5 = Kit.Css.Is("bs5");
   var isBs4 = Kit.Css.Is("bs4");
   var isBs3 = Kit.Css.Is("bs3");
+
+  var faqJsData = new {
+    moduleId = "app-faq4-js-" + MyContext.Module.Id
+  };
   
-  var accordionData = new {
-    domId = DynamicModel.DomId,
-    options =  new {
-      tagStickyHeader = "header",           // This is the sticky header in the page, the height of which must be respected on scroll
-      classIsExpanded =  isBs3 ? "is-expanded" : "show" , // This marks open accordions
-      classInactive = "collapsed",          // This marks inactive accordions
-      attrChild = "data-accordion-child",   // This attribute contains a key which is used in the #-fragment for navigating to a section
-      attrParent = isBs5 ? "data-bs-target" // This attribute marks the title tag which will trigger expand/collapse, the value must be same as in the child
-        : isBs4 ? "data-target" 
-        : "data-accordion-parent",        
-    }
+  var accordionOptions = new {
+    tagStickyHeader = "header",           // This is the sticky header in the page, the height of which must be respected on scroll
+    classIsExpanded =  isBs3 ? "is-expanded" : "show" , // This marks open accordions
+    classInactive = "collapsed",          // This marks inactive accordions
+    attrChild = "data-accordion-child",   // This attribute contains a key which is used in the #-fragment for navigating to a section
+    attrParent = isBs5 ? "data-bs-target" // This attribute marks the title tag which will trigger expand/collapse, the value must be same as in the child
+      : isBs4 ? "data-target" 
+      : "data-accordion-parent",        
   };
 }
 
@@ -36,11 +33,11 @@
 @* When the page is ready, run initAccordion init JS *@
 
 @if (isBs3) {
-  @Kit.Page.TurnOn("window.appFaq4.initAccordion()", data: accordionData)
+  @Kit.Page.TurnOn("window.appFaq4.initAccordion()", data: accordionOptions)
 } else {
-  @Kit.Page.TurnOn("window.appFaq4.initAccordionBs5()", data: accordionData)
+  @Kit.Page.TurnOn("window.appFaq4.initAccordionBs5()", data: accordionOptions)
 }
 
 @* Load the JavaScripts/Styles from the App folder. Each edition (bs5, bs3, etc.) has different files *@
-<link rel="stylesheet" href="@CmsContext.View.Path/dist/styles.min.css" @Kit.Page.AssetAttributes()>
-<script type="text/javascript" src="@CmsContext.View.Path/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
+<link rel="stylesheet" href="@MyView.Path/dist/styles.min.css" @Kit.Page.AssetAttributes()>
+<script type="text/javascript" src="@MyView.Path/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>

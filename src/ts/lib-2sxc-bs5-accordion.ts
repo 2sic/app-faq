@@ -12,7 +12,7 @@ import { AccordionOptions } from './lib-2sxc-accordion-options';
   Because this is shared, all parameters like DOM-IDs etc. must be provided in the Init-call that it can work across apps
 */ 
 
-export function initAccordionBs5({ domId, options } : { domId: string, options: AccordionOptions }) {
+export function initAccordionBs5(options : AccordionOptions) {
   // get navHight for correct scrollposition
   var nav = (document.getElementsByTagName(options.tagStickyHeader)[0] as HTMLElement);
   var navHeight = (nav != null ? nav.offsetHeight : 0);

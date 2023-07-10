@@ -6,9 +6,9 @@
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Requires 2sxc v16.01
-| Dnn                 | ✅    | For v9.6.1
-| Oqtane 2            | ✅    | Requires v3.04
+| 2sxc                | ✅    | Requires 2sxc v16.02
+| Dnn                 | ✅    | For v9.6.1+
+| Oqtane 2            | ✅    | Requires v3.04+
 | No jQuery           | ✅    | Since v4
 | Live Demo           | ➖    |
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/_fpa_ZHf) on [azing.org](https://azing.org/2sxc)
@@ -48,3 +48,6 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Replaced turnOn Tag with `Kit.Page.TurnOn`
   * Removed _ from Filenames
   * Code in one file the bs5, less duplicated code
+* v04.05.00 2023-07
+  * 2sxc 16.02 coding conventions
+  * everything typed
