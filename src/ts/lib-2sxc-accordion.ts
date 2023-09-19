@@ -18,7 +18,7 @@ export function initAccordion(options : AccordionOptions) {
   var navHeight = (nav != null ? nav.offsetHeight : 0);
 
   // attach click to all accordions when loading
-  var accordionOpener = document.querySelectorAll(`[${options.attrParent}]`);
+  var accordionOpener = document.querySelectorAll(`.${options.accordionOpener}`);
 
   accordionOpener.forEach((elem: HTMLElement, index) => {	
     elem.addEventListener('click', (event) => {

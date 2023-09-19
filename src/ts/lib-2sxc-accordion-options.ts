@@ -4,4 +4,5 @@ export interface AccordionOptions {
   classInactive?: string;
   attrParent: string;
   attrChild: string;
+  accordionOpener: string;
 }

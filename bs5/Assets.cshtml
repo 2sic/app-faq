@@ -17,7 +17,8 @@
     attrChild = "data-accordion-child",   // This attribute contains a key which is used in the #-fragment for navigating to a section
     attrParent = isBs5 ? "data-bs-target" // This attribute marks the title tag which will trigger expand/collapse, the value must be same as in the child
       : isBs4 ? "data-target" 
-      : "data-accordion-parent",        
+      : "data-accordion-parent",
+    accordionOpener = isBs5 ? "accordion-button" : "app-faq4-title",        
   };
 }
 
