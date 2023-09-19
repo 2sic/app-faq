@@ -23,7 +23,7 @@
   var qToolbar = Kit.Toolbar.Default().Layout("-");
 }
 
-<div class="app-faq4-js-@MyContext.Module.Id position-relative" @mainToolbar.For(config)>
+<div class="app-faq4-js-@UniqueKey position-relative" @mainToolbar.For(config)>
 	<div class="app-faq4-wrapper" @Kit.Edit.Attribute("quick-edit-config", new { modules = new {  enable = true }})>
     @* Display the categories *@
     @if (App.Settings.Bool("UseCategories") && categories.Count() > 1) {

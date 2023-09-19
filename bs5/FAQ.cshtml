@@ -26,7 +26,7 @@
   var isBs5 = Kit.Css.Is("bs5");
 }
 
-<div class="app-faq4-js-@MyContext.Module.Id position-relative" @mainToolbar.For(config)>
+<div class="app-faq4-js-@UniqueKey position-relative" @mainToolbar.For(config)>
 	<div class="app-faq4-wrapper" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
     @* Display the categories *@
     @if (App.Settings.Bool("UseCategories") && categories.Count() > 1) {
@@ -63,7 +63,7 @@
         var marginRight = isBs5 ? "me-3" : "mr-3";
 
         <div class="accordion-item" data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(q)>
-          <h2 class="accordion-header" id="a-@MyContext.Module.Id-@q.Id">
+          <h2 class="accordion-header" id="a-@UniqueKey-@q.Id">
             <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" @bsToggleAttr="collapse" @bsTargetAttr="#a-@q.Id" aria-expanded="true" aria-controls="a-@q.Id">
               <span><i class="@marginRight co-icon fas @icon" aria-hidden="true"></i></span>
               @Tags.Nl2Br(q.String("Question"))
