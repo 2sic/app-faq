@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.01.01" ExportDate="2023-05-31T16:14:03.7747511+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.06.00" ExportDate="2023-09-19T16:09:44.7142135+02:00">
   <Header>
     <App Guid="468b2772-43bb-4008-9ded-396bd5eaab4f" />
     <Language Default="en-us" />
@@ -986,6 +986,12 @@
             <Value Key="DisableTranslation" Value="False" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
+            <Value Key="HelpLink" Value="" Type="Hyperlink">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Information" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="InputType" Value="string-dropdown" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -999,6 +1005,9 @@
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Tooltip" Value="" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
@@ -1017,13 +1026,22 @@
             </Value>
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="3163d4d8-122d-4ef7-9f55-d5855ba918af" Json="True" KeyNumber="5543">
+            <Value Key="AllowMultiValue" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="DropdownValues" Value=":Not specified&#xA;EntityId:Question ID&#xA;EntityTitle:Question Title" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="DropdownValues" Value=":Nicht spezifiziert&#xA;EntityId:Antwort ID&#xA;EntityTitle:Frage Titel" Type="String">
+              <Dimension DimensionID="153" ReadOnly="false" />
             </Value>
             <Value Key="DropdownValuesFormat" Value="value-label" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="EnableTextEntry" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Separator" Value="," Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
           </Entity>
@@ -1042,6 +1060,12 @@
             <Value Key="DisableTranslation" Value="False" Type="Boolean">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
+            <Value Key="HelpLink" Value="" Type="Hyperlink">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Information" Value="" Type="String">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="InputType" Value="string-dropdown" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -1055,6 +1079,9 @@
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Tooltip" Value="" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
@@ -1073,13 +1100,22 @@
             </Value>
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="427e0eea-77a6-4b2b-990d-3d12ac1438f4" Json="True" KeyNumber="5544">
+            <Value Key="AllowMultiValue" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
             <Value Key="DropdownValues" Value="asc:Ascending (0..9, a...z)&#xA;desc:Descending (z...a, 9...0)" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="DropdownValues" Value="asc:Aufsteigend (0..9, a...z)&#xA;desc:Absteigend (z...a, 9...0)" Type="String">
+              <Dimension DimensionID="153" ReadOnly="false" />
             </Value>
             <Value Key="DropdownValuesFormat" Value="value-label" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="EnableTextEntry" Value="False" Type="Boolean">
+              <Dimension DimensionID="152" ReadOnly="false" />
+            </Value>
+            <Value Key="Separator" Value="," Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
           </Entity>
@@ -1125,7 +1161,7 @@
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="04.04.00" Type="String">
+      <Value Key="Version" Value="04.05.00" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
     </Entity>
@@ -3127,7 +3163,7 @@
       <Value Key="Name" Value="FAQs" Type="String" />
       <Value Key="Params" Value="" Type="String" />
       <Value Key="StreamsOut" Value="Default,Header,Questions" Type="String" />
-      <Value Key="StreamWiring" Value="76ead7ac-660a-4d91-952f-94238cd1d5b0:Default&gt;Out:Default&#xD;&#xA;76ead7ac-660a-4d91-952f-94238cd1d5b0:Default&gt;b7b388a0-1197-471c-8594-f9a4a708fa7c:Default&#xD;&#xA;b7b388a0-1197-471c-8594-f9a4a708fa7c:Default&gt;255f5fcd-7e23-4a69-aa48-573e3a65b02d:Default&#xD;&#xA;255f5fcd-7e23-4a69-aa48-573e3a65b02d:Default&gt;38240a9c-e611-45a8-82a4-de83f7f80750:Priority1&#xD;&#xA;74e11b57-1a13-4516-b763-e87452001a9c:Question&gt;38240a9c-e611-45a8-82a4-de83f7f80750:Priority2&#xD;&#xA;38240a9c-e611-45a8-82a4-de83f7f80750:Default&gt;eb3be985-c2ef-4060-8876-54be9fe96ca7:Default&#xD;&#xA;eb3be985-c2ef-4060-8876-54be9fe96ca7:Default&gt;Out:Questions&#xD;&#xA;76ead7ac-660a-4d91-952f-94238cd1d5b0:Default&gt;eb3be985-c2ef-4060-8876-54be9fe96ca7:CustomSort" Type="String" />
+      <Value Key="StreamWiring" Value="76ead7ac-660a-4d91-952f-94238cd1d5b0:Default&gt;b7b388a0-1197-471c-8594-f9a4a708fa7c:Default&#xD;&#xA;b7b388a0-1197-471c-8594-f9a4a708fa7c:Default&gt;255f5fcd-7e23-4a69-aa48-573e3a65b02d:Default&#xD;&#xA;255f5fcd-7e23-4a69-aa48-573e3a65b02d:Default&gt;38240a9c-e611-45a8-82a4-de83f7f80750:Priority1&#xD;&#xA;74e11b57-1a13-4516-b763-e87452001a9c:Question&gt;38240a9c-e611-45a8-82a4-de83f7f80750:Priority2&#xD;&#xA;38240a9c-e611-45a8-82a4-de83f7f80750:Default&gt;eb3be985-c2ef-4060-8876-54be9fe96ca7:Default&#xD;&#xA;eb3be985-c2ef-4060-8876-54be9fe96ca7:Default&gt;Out:Questions&#xD;&#xA;76ead7ac-660a-4d91-952f-94238cd1d5b0:Default&gt;eb3be985-c2ef-4060-8876-54be9fe96ca7:CustomSort" Type="String" />
       <Value Key="TestParameters" Value="" Type="String" />
       <Value Key="VisualDesignerData" Value="{&quot;ShowDataSourceDetails&quot;:true}" Type="String" />
     </Entity>
