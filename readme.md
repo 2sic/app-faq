@@ -6,9 +6,9 @@
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Requires 2sxc v16.02
+| 2sxc                | ✅    | Requires 2sxc v16.04
 | Dnn                 | ✅    | For v9.6.1+
-| Oqtane 2            | ✅    | Requires v3.04+
+| Oqtane 2            | ✅    | Requires v04.00+
 | No jQuery           | ✅    | Since v4
 | Live Demo           | ➖    |
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/_fpa_ZHf) on [azing.org](https://azing.org/2sxc)
