@@ -4,11 +4,11 @@
 
 > This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
-| Aspect              | Status | Comments or Version |
-| ------------------- | :----: | ------------------- |
+| Aspect              | Status | Comments or Version
+| ------------------- | :----: | -------------------
 | 2sxc                | ✅    | Requires 2sxc v17.06.02
 | Dnn                 | ✅    | For v9.6.1+
-| Oqtane 2            | ✅    | Requires v04.00+
+| Oqtane              | ✅    | Requires v04.00+
 | No jQuery           | ✅    | Since v4
 | Live Demo           | ➖    |
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/_fpa_ZHf) on [azing.org](https://azing.org/2sxc)
@@ -53,3 +53,9 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * everything typed
 * v04.06.17 2024-04
   * strong Typed
+
+TODO: @2dg
+
+- check the changes I made so you understand them
+- Assets.cshtml seems to be used in all editions, pls move to /shared/Assets.cshtml and verify bs3/4/5 still works
+  - this should only be done here, because the file is directly called from BS3 as well (don't do it in other apps like Counter)
