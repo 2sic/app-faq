@@ -8,7 +8,7 @@
   var categories = config.Children("Categories");
 
   // Get some helper commands for later on
-  var helpers = GetCode("../shared/Helpers.cs");
+  var helpers = GetCode("Helpers.cs");
   
   // Toolbar Configurations for later
   var mainToolbar = Kit.Toolbar.Default()
@@ -20,7 +20,7 @@
     .Data("Category");
 
   // Toolbar without Layout Button
-  var qToolbar = Kit.Toolbar.Default().Layout("-");
+  var qToolbar = Kit.Toolbar.Default().Layout("-").Delete();
 }
 
 <div class="app-faq4-js-@UniqueKey position-relative" @mainToolbar.For(config)>
@@ -49,7 +49,7 @@
     @* List the questions *@
     <div>
 			<div class="app-faq4-question-wrapper">
-			@foreach (var q in AsItems(MyData["Questions"])) {
+			@foreach (var q in AsItems(MyData.GetStream("Questions"))) {
 				// get the categories for interactive (JavaScript) filtering
 				var qCats = q.Children("Categories").Select(x => x.String("Key"));
 				// should this be expanded initially? default is false
@@ -81,4 +81,4 @@
 	</div>
 </div>
 
-@Html.Partial("../bs5/Assets.cshtml")
+@Html.Partial("../shared/Assets.cshtml")

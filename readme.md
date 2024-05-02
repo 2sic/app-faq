@@ -4,11 +4,11 @@
 
 > This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
-| Aspect              | Status | Comments or Version |
-| ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Requires 2sxc v16.04
+| Aspect              | Status | Comments or Version
+| ------------------- | :----: | -------------------
+| 2sxc                | ✅    | Requires 2sxc v17.07.00
 | Dnn                 | ✅    | For v9.6.1+
-| Oqtane 2            | ✅    | Requires v04.00+
+| Oqtane              | ✅    | Requires v05.00+
 | No jQuery           | ✅    | Since v4
 | Live Demo           | ➖    |
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/_fpa_ZHf) on [azing.org](https://azing.org/2sxc)
@@ -51,3 +51,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v04.05.00 2023-07
   * 2sxc 16.02 coding conventions
   * everything typed
+* v04.17.00 2024-04
+  * strong Typed

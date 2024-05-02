@@ -1,16 +1,14 @@
-@inherits Custom.Hybrid.RazorTyped
-@using System.Linq;
-@using ToSic.Razor.Blade;
-@* --- This is the Bootstrap5 Edition of the Files --- *@
+@inherits AppCode.Razor.AppRazor
+@using System.Linq
+@using ToSic.Razor.Blade
+@using AppCode.Data
+
+@* --- This is the Bootstrap5 and also BS4 Edition of the File --- *@
 @{
-  // The main configuration comprises the substance of the current module.
-  var config = MyItem;
-  var categories = config.Children("Categories");
+  // The config determines what categories to show, ordering of questions etc.
+  var config = As<ViewConfiguration>(MyItem);
 
-  // Get some helper commands for later on
-  var helpers = GetCode("../shared/Helpers.cs");
-
-  // Toolbar Configurations for later
+  // Toolbar Configurations for later, with Data button on 2nd position
   var mainToolbar = Kit.Toolbar.Default()
     .Data("Question", tweak: b => b.Position(2));
   
@@ -20,58 +18,69 @@
     .Data("Category");
 
   // Toolbar without Layout Button
-  var qToolbar = Kit.Toolbar.Default().Layout("-");
+  var qToolbar = Kit.Toolbar.Default().Layout("-").Delete();
   
-  // query whether BS5 or BS4 for Class
+  // Check if BS5 or BS4 for Classes - and figure out the classes (to be used below)
   var isBs5 = Kit.Css.Is("bs5");
+  var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
+  var bsTargetAttr = isBs5 ? "data-bs-target" : "data-target";
+  var marginRight = isBs5 ? "me-3" : "mr-3";
 }
 
 <div class="app-faq4-js-@UniqueKey position-relative" @mainToolbar.For(config)>
 	<div class="app-faq4-wrapper" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
+
     @* Display the categories *@
-    @if (App.Settings.Bool("UseCategories") && categories.Count() > 1) {
+    @if (App.Settings.UseCategories && config.Categories.Count() > 1)
+    {
 			<div class="app-faq4-category-wrapper mb-3" @catToolbar>
         <ul class="px-0">
           <li class="btn btn-outline-primary" data-filter="nofilter">
-            @App.Resources.String("LabelShowAll")
+            @App.Resources.LabelShowAll
           </li>
-          @foreach (var c in categories) {
-            <li class="btn btn-outline-primary" data-filter='@c.String("Key")'>
-              @c.String("Name")
+          @foreach (var category in config.Categories) {
+            <li class="btn btn-outline-primary" data-filter='@category.Key'>
+              @category.Name
             </li>
           }
         </ul>
       </div>
     }
     
-    @* Add some space for toolbar if no categories shown *@
-    @if (MyUser.IsContentAdmin && !App.Settings.Bool("UseCategories")) {
+    @* Add some space to show toolbar if no categories are shown *@
+    @if (MyUser.IsContentAdmin && !App.Settings.UseCategories) {
       <div class="py-4"></div>
     }
-    @* List the questions *@
+
+    @* List the questions and answers *@
     <div class="app-faq4-question-wrapper accordion accordion-flush" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
-       @foreach (var q in AsItems(MyData["Questions"])) {
-
+      
+      @foreach (var question in AsList<Question>(MyData.GetStream("Questions")) )
+      {
         // get the categories for interactive (JavaScript) filtering
-        var qCats = q.Children("Categories").Select(x => x.String("Key"));
-        var initiallyExpanded = q.Bool("InitiallyExpanded");
-        var icon = Text.First(q.String("Icon"), "fa-question-circle");     
+        var qCats = question.Categories.Select(x => x.Key);
+        // figure out expand state and icon (with fallback icon)
+        var expand = question.InitiallyExpanded; 
+        var icon = Text.First(question.Icon, "fa-question-circle");     
 
-        // Class for BS5 or BS4 
-        var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
-        var bsTargetAttr = isBs5 ? "data-bs-target" : "data-target";
-        var marginRight = isBs5 ? "me-3" : "mr-3";
-
-        <div class="accordion-item" data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(q)>
-          <h2 class="accordion-header" id="a-@UniqueKey-@q.Id">
-            <button class='accordion-button @(initiallyExpanded ? "" : "collapsed")' @helpers.AdminHelperLabel(q) type="button" @bsToggleAttr="collapse" @bsTargetAttr="#a-@q.Id" aria-expanded="true" aria-controls="a-@q.Id">
+        @* Render the question accordion title + the answer in a collapsible section *@
+        <div class="accordion-item" data-filterelem="@Kit.Json.ToJson(qCats)" @qToolbar.For(question)>
+          <h2 class="accordion-header" id="a-@UniqueKey-@question.Id">
+            <button type="button"
+              class='accordion-button @(expand ? "" : "collapsed")'
+              @AdminHelperLabel(question)
+              @bsToggleAttr="collapse"
+              @bsTargetAttr="#a-@question.Id"
+              aria-expanded="true"
+              aria-controls="a-@question.Id"
+            >
               <span><i class="@marginRight co-icon fas @icon" aria-hidden="true"></i></span>
-              @Tags.Nl2Br(q.String("Question"))
+              @Tags.Nl2Br(question.Question)
             </button>
           </h2>
-          <div id="a-@q.Id" class='accordion-collapse collapse @(initiallyExpanded ? "show" : "")' aria-labelledby="a-@q.Id">
-            <div class="accordion-body" data-accordion-child="@q.Id">
-              @q.Html("Answer")
+          <div id="a-@question.Id" class='accordion-collapse collapse @(expand ? "show" : "")' aria-labelledby="a-@question.Id">
+            <div class="accordion-body" data-accordion-child="@question.Id">
+              @question.Html("Answer")
             </div>
           </div>
         </div>
@@ -81,4 +90,4 @@
 	</div>
 </div>
 
-@Html.Partial("./Assets.cshtml")
+@Html.Partial("../shared/Assets.cshtml")
