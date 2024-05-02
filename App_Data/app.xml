@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.07.00" ExportDate="2023-09-26T07:50:23.9814168+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="17.07.00" ExportDate="2024-05-02T10:42:05.4241438+02:00">
   <Header>
     <App Guid="468b2772-43bb-4008-9ded-396bd5eaab4f" />
     <Language Default="en-us" />
@@ -1026,9 +1026,6 @@
             </Value>
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="3163d4d8-122d-4ef7-9f55-d5855ba918af" Json="True" KeyNumber="5543">
-            <Value Key="AllowMultiValue" Value="False" Type="Boolean">
-              <Dimension DimensionID="152" ReadOnly="false" />
-            </Value>
             <Value Key="DropdownValues" Value=":Not specified&#xA;EntityId:Question ID&#xA;EntityTitle:Question Title" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -1039,9 +1036,6 @@
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="EnableTextEntry" Value="False" Type="Boolean">
-              <Dimension DimensionID="152" ReadOnly="false" />
-            </Value>
-            <Value Key="Separator" Value="," Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
           </Entity>
@@ -1100,9 +1094,6 @@
             </Value>
           </Entity>
           <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="427e0eea-77a6-4b2b-990d-3d12ac1438f4" Json="True" KeyNumber="5544">
-            <Value Key="AllowMultiValue" Value="False" Type="Boolean">
-              <Dimension DimensionID="152" ReadOnly="false" />
-            </Value>
             <Value Key="DropdownValues" Value="asc:Ascending (0..9, a...z)&#xA;desc:Descending (z...a, 9...0)" Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
@@ -1113,9 +1104,6 @@
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
             <Value Key="EnableTextEntry" Value="False" Type="Boolean">
-              <Dimension DimensionID="152" ReadOnly="false" />
-            </Value>
-            <Value Key="Separator" Value="," Type="String">
               <Dimension DimensionID="152" ReadOnly="false" />
             </Value>
           </Entity>
@@ -1129,6 +1117,9 @@
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
       <Value Key="AllowTokenTemplates" Value="False" Type="Boolean">
+        <Dimension DimensionID="152" ReadOnly="false" />
+      </Value>
+      <Value Key="DebugLog" Value="" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
       <Value Key="Description" Value="" Type="String">
@@ -1152,16 +1143,16 @@
       <Value Key="RequiredDnnVersion" Value="09.06.01" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredOqtaneVersion" Value="03.04.00" Type="String">
+      <Value Key="RequiredOqtaneVersion" Value="05.00.00" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="16.04.00" Type="String">
+      <Value Key="RequiredVersion" Value="17.07.00" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="04.06.00" Type="String">
+      <Value Key="Version" Value="04.17.00" Type="String">
         <Dimension DimensionID="152" ReadOnly="false" />
       </Value>
     </Entity>
@@ -2984,30 +2975,6 @@
       <Value Key="Content" Value="null" Type="Entity" />
       <Value Key="Presentation" Value="null" Type="Entity" />
       <Value Key="Template" Value="14f785f2-a337-4ac3-ac42-3d19313b0423" Type="Entity" />
-    </Entity>
-    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Question" EntityGUID="76c545f0-a25e-49f2-8f1d-c0f88cf64df5">
-      <Value Key="Answer" Value="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu&lt;/p&gt;" Type="String">
-        <Dimension DimensionID="152" ReadOnly="false" />
-      </Value>
-      <Value Key="Categories" Value="adcfe352-0cd2-4743-b082-91aea79965f3" Type="Entity" />
-      <Value Key="Icon" Value="" Type="String">
-        <Dimension DimensionID="152" ReadOnly="false" />
-      </Value>
-      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
-        <Dimension DimensionID="152" ReadOnly="false" />
-      </Value>
-      <Value Key="InternalTitle" Value="Demo Entry" Type="String">
-        <Dimension DimensionID="152" ReadOnly="false" />
-      </Value>
-      <Value Key="Priority" Value="0" Type="Number">
-        <Dimension DimensionID="152" ReadOnly="false" />
-      </Value>
-      <Value Key="Question" Value="Demo Question" Type="String">
-        <Dimension DimensionID="152" ReadOnly="false" />
-      </Value>
-      <Value Key="Question" Value="Demo Frage" Type="String">
-        <Dimension DimensionID="153" ReadOnly="false" />
-      </Value>
     </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="9b019f71-80e1-41b8-8286-8c8d9aaf99d0" Json="True">
       <Value Key="Content" Value="null" Type="Entity" />
