@@ -6,7 +6,7 @@
 
 | Aspect              | Status | Comments or Version
 | ------------------- | :----: | -------------------
-| 2sxc                | ✅    | Requires 2sxc v17.06.02
+| 2sxc                | ✅    | Requires 2sxc v17.07.00
 | Dnn                 | ✅    | For v9.6.1+
 | Oqtane              | ✅    | Requires v04.00+
 | No jQuery           | ✅    | Since v4
@@ -51,11 +51,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v04.05.00 2023-07
   * 2sxc 16.02 coding conventions
   * everything typed
-* v04.06.17 2024-04
+* v04.17.00 2024-04
   * strong Typed
-
-TODO: @2dg
-
-- check the changes I made so you understand them
-- Assets.cshtml seems to be used in all editions, pls move to /shared/Assets.cshtml and verify bs3/4/5 still works
-  - this should only be done here, because the file is directly called from BS3 as well (don't do it in other apps like Counter)

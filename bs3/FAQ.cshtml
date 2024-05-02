@@ -49,7 +49,7 @@
     @* List the questions *@
     <div>
 			<div class="app-faq4-question-wrapper">
-			@foreach (var q in AsItems(MyData["Questions"])) {
+			@foreach (var q in AsItems(MyData.GetStream("Questions"))) {
 				// get the categories for interactive (JavaScript) filtering
 				var qCats = q.Children("Categories").Select(x => x.String("Key"));
 				// should this be expanded initially? default is false

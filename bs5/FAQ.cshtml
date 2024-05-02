@@ -55,7 +55,7 @@
     @* List the questions and answers *@
     <div class="app-faq4-question-wrapper accordion accordion-flush" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
       
-      @foreach (var question in AsList<Question>(MyData["Questions"]) )
+      @foreach (var question in AsList<Question>(MyData.GetStream("Questions")) )
       {
         // get the categories for interactive (JavaScript) filtering
         var qCats = question.Categories.Select(x => x.Key);
