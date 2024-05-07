@@ -53,3 +53,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * everything typed
 * v04.17.00 2024-04
   * strong Typed
+  * Auto Generated Class
