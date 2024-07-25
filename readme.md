@@ -54,3 +54,6 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v04.17.00 2024-04
   * strong Typed
   * Auto Generated Class
+* v04.17.01 2024-07
+  * Update app.sln and app.csproj
+  
