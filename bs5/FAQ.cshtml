@@ -25,6 +25,22 @@
   var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
   var bsTargetAttr = isBs5 ? "data-bs-target" : "data-target";
   var marginRight = isBs5 ? "me-3" : "mr-3";
+
+  var questions = AsList<Question>(MyData.GetStream("Questions"));
+
+  // Generate Metadata
+  Kit.Page.AddJsonLd(new Dictionary<string, object> {
+    { "@context", "https://schema.org" },
+    { "@type", "FAQPage" },
+    { "mainEntity", questions.Select(faq => new Dictionary<string, object> {
+        { "@type", "Question" },
+        { "name", faq.Question },
+        { "acceptedAnswer", new Dictionary<string, object> {
+            { "@type", "Answer" },
+            { "text", Kit.Scrub.All(faq.Answer) }
+        }}
+    }).ToList() }
+  });
 }
 
 <div class="app-faq4-js-@UniqueKey position-relative" @mainToolbar.For(config)>
@@ -55,7 +71,7 @@
     @* List the questions and answers *@
     <div class="app-faq4-question-wrapper accordion accordion-flush" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
       
-      @foreach (var question in AsList<Question>(MyData.GetStream("Questions")) )
+      @foreach (var question in questions)
       {
         // get the categories for interactive (JavaScript) filtering
         var qCats = question.Categories.Select(x => x.Key);

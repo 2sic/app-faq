@@ -56,4 +56,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Auto Generated Class
 * v04.17.01 2024-07
   * Update app.sln and app.csproj
-  
+* v.4.17.01 2025-07
+  * Add JSON Metadata Generation
