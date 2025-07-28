@@ -28,19 +28,21 @@
 
   var questions = AsList<Question>(MyData.GetStream("Questions"));
 
-  // Generate Metadata
-  Kit.Page.AddJsonLd(new Dictionary<string, object> {
-    { "@context", "https://schema.org" },
-    { "@type", "FAQPage" },
-    { "mainEntity", questions.Select(faq => new Dictionary<string, object> {
-        { "@type", "Question" },
-        { "name", faq.Question },
-        { "acceptedAnswer", new Dictionary<string, object> {
-            { "@type", "Answer" },
-            { "text", Kit.Scrub.All(faq.Answer) }
-        }}
-    }).ToList() }
-  });
+  if (App.Settings.GoogleRichSearchResults) {
+    // Generate Metadata
+    Kit.Page.AddJsonLd(new Dictionary<string, object> {
+      { "@context", "https://schema.org" },
+      { "@type", "FAQPage" },
+      { "mainEntity", questions.Select(faq => new Dictionary<string, object> {
+          { "@type", "Question" },
+          { "name", faq.Question },
+          { "acceptedAnswer", new Dictionary<string, object> {
+              { "@type", "Answer" },
+              { "text", Kit.Scrub.All(faq.Answer) }
+          }}
+      }).ToList() }
+    });
+  }
 }
 
 <div class="app-faq4-js-@UniqueKey position-relative" @mainToolbar.For(config)>
