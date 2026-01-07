@@ -7,9 +7,11 @@
 @{
   // The config determines what categories to show, ordering of questions etc.
   var config = As<ViewConfiguration>(MyItem);
-
+  var hasVisibleCategories = App.Settings.UseCategories && config.Categories.Count() > 1;
+  
   // Toolbar Configurations for later, with Data button on 2nd position
   var mainToolbar = Kit.Toolbar.Default()
+    .Settings(hover: hasVisibleCategories ? "right" : "left")
     .Data("Question", tweak: b => b.Position(2));
   
   // Toolbar to manage categories
@@ -27,6 +29,7 @@
   var marginRight = isBs5 ? "me-3" : "mr-3";
 
   var questions = AsList<Question>(MyData.GetStream("Questions"));
+  var isFallback = AsList<Question>(MyData.GetStream("QuestionsFromCurrentConfig")).Count() == 0;
 
   if (App.Settings.GoogleRichSearchResults) {
     // Generate Metadata
@@ -45,11 +48,21 @@
   }
 }
 
+@if (MyUser.IsContentAdmin && config.IsDemoItem) {
+  <div class="alert alert-warning">
+    @Html.Raw(Kit.Scrub.Only(App.Resources.MessageNotInitialized, "p"))
+  </div>
+}
+
 <div class="app-faq4-js-@UniqueKey position-relative" @mainToolbar.For(config)>
 	<div class="app-faq4-wrapper" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
 
+    @if (config.ShowTitle) {
+      <h2 class="app-faq4-title mb-3">@config.Title</h2>
+    }
+
     @* Display the categories *@
-    @if (App.Settings.UseCategories && config.Categories.Count() > 1)
+    @if (hasVisibleCategories)
     {
 			<div class="app-faq4-category-wrapper mb-3" @catToolbar>
         <ul class="px-0">
@@ -65,13 +78,14 @@
       </div>
     }
     
-    @* Add some space to show toolbar if no categories are shown *@
-    @if (MyUser.IsContentAdmin && !App.Settings.UseCategories) {
-      <div class="py-4"></div>
-    }
-
     @* List the questions and answers *@
     <div class="app-faq4-question-wrapper accordion accordion-flush" @Kit.Edit.Attribute("quick-edit-config", new { modules = new { enable = true }})>
+
+      @if (MyUser.IsContentAdmin && isFallback) {
+        <div class="alert alert-warning">
+          @Html.Raw(Kit.Scrub.Only(App.Resources.MessageNoResultsForCategory, "p"))
+        </div>
+      }
       
       @foreach (var question in questions)
       {
