@@ -1,4 +1,3 @@
-require('../../node_modules/bs5/js/src/carousel');
 import { AccordionOptions } from './lib-2sxc-accordion-options';
 
 /*
