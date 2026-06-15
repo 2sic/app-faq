@@ -56,5 +56,9 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Auto Generated Class
 * v04.17.01 2024-07
   * Update app.sln and app.csproj
-* v.4.17.01 2025-07
+* v04.17.01 2025-07
   * Add JSON Metadata Generation
+* v04.21.00 2026-03
+  * Added intellisense Extensions for Visual Studio Code
+* v04.21.01 2026-06
+  * Switched from webpack to Vite for faster builds
