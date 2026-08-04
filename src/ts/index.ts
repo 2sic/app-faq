@@ -29,7 +29,7 @@ function initFilterButtons(moduleId: string): void {
       filter.classList.toggle('btn-primary');
       filter.classList.remove('btn-outline-primary');
 
-      displayFilterItems(filter.getAttribute('data-filter'), moduleId);
+      displayFilterItems(filter.getAttribute('data-filter') ?? 'nofilter', moduleId);
     });
   });
 }
@@ -37,13 +37,13 @@ function initFilterButtons(moduleId: string): void {
 
 function displayFilterItems(filter: string, moduleId: string): void {
   // get all filter elements
-  document.querySelectorAll(`.${moduleId} [data-filterelem]`)
-    .forEach((filterElem: HTMLElement) => {
+  document.querySelectorAll<HTMLElement>(`.${moduleId} [data-filterelem]`)
+    .forEach((filterElem) => {
       // display all elements
       filterElem.style.display = "none";
 
       // display element based on filter match
-      if (filter === 'nofilter' || JSON.parse(filterElem.getAttribute('data-filterelem')).includes(filter)) {
+      if (filter === 'nofilter' || JSON.parse(filterElem.getAttribute('data-filterelem') ?? '[]').includes(filter)) {
         filterElem.style.display = "block"
       }
     });

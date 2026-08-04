@@ -17,16 +17,18 @@ export function initAccordionBs5(options : AccordionOptions) {
   var navHeight = (nav != null ? nav.offsetHeight : 0);
 
   // attach click to all accordions when loading
-  var accordionOpener = document.querySelectorAll(`.${options.accordionOpener}`);
+  var accordionOpener = document.querySelectorAll<HTMLElement>(`.${options.accordionOpener}`);
 
-  accordionOpener.forEach((elem: HTMLElement) => {	
+  accordionOpener.forEach((elem) => { 	
     elem.addEventListener('click', (event) => {
       event.preventDefault();
 
       const hash = elem.getAttribute(options.attrParent);
       
       // add hash to url
-      location.hash = hash;
+      if (hash) {
+        location.hash = hash;
+      }
     })
   });
 

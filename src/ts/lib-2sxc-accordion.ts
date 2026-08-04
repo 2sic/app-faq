@@ -18,9 +18,9 @@ export function initAccordion(options : AccordionOptions) {
   var navHeight = (nav != null ? nav.offsetHeight : 0);
 
   // attach click to all accordions when loading
-  var accordionOpener = document.querySelectorAll(`.${options.accordionOpener}`);
+  var accordionOpener = document.querySelectorAll<HTMLElement>(`.${options.accordionOpener}`);
 
-  accordionOpener.forEach((elem: HTMLElement, index) => {	
+  accordionOpener.forEach((elem) => { 	
     elem.addEventListener('click', (event) => {
       event.preventDefault();
 
@@ -28,6 +28,10 @@ export function initAccordion(options : AccordionOptions) {
       const hash = currentElem.dataset.accordionParent;
       const parent = currentElem.parentElement;	
       const targetOpenElem = document.querySelector(`[${options.attrChild}="${hash}"]`) as HTMLElement;		
+
+      if (!hash || !parent) {
+        return;
+      }
 
       // add hash to url
       location.hash = hash;
@@ -48,7 +52,13 @@ export function initAccordion(options : AccordionOptions) {
       const elemOffsetX = targetHashElem.getBoundingClientRect().top + window.scrollY - navHeight;
       const targetOpenElem = document.querySelector(`[${options.attrChild}="${hash}"]`) as HTMLElement;		
 
-      targetHashElem.parentElement.classList.add(`${options.classIsExpanded}`);
+      const targetHashParent = targetHashElem.parentElement;
+
+      if (!targetHashParent) {
+        return;
+      }
+
+      targetHashParent.classList.add(`${options.classIsExpanded}`);
 
       // open accordion
       show(targetOpenElem, {
