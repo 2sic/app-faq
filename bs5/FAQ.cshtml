@@ -3,7 +3,7 @@
 @using ToSic.Razor.Blade
 @using AppCode.Data
 
-@* --- This is the Bootstrap5 and also BS4 Edition of the File --- *@
+@* --- This is the Bootstrap 5 edition of the file --- *@
 @{
   // The config determines what categories to show, ordering of questions etc.
   var config = As<ViewConfiguration>(MyItem);
@@ -22,11 +22,11 @@
   // Toolbar without Layout Button
   var qToolbar = Kit.Toolbar.Default().Layout("-").Delete();
   
-  // Check if BS5 or BS4 for Classes - and figure out the classes (to be used below)
-  var isBs5 = Kit.Css.Is("bs5");
-  var bsToggleAttr = isBs5 ? "data-bs-toggle" : "data-toggle";
-  var bsTargetAttr = isBs5 ? "data-bs-target" : "data-target";
-  var marginRight = isBs5 ? "me-3" : "mr-3";
+  // Bootstrap 5 attributes and utility classes
+
+  var bsToggleAttr = "data-bs-toggle";
+  var bsTargetAttr = "data-bs-target";
+  var marginRight = "me-3";
 
   var questions = AsList<Question>(MyData.GetStream("Questions"));
   var isFallback = AsList<Question>(MyData.GetStream("QuestionsFromCurrentConfig")).Count() == 0;
